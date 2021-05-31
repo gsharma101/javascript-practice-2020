@@ -1,0 +1,26 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.heading {
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.info {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.upperLetter {
+  text-transform: capitalize;
+}
