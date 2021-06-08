@@ -32,7 +32,7 @@ if (myName === 'Gaurav') {
     const job = 'Entreprenaur';
     console.log(x);
 }
-*/
+
 
 //!HOISTING PRACTICE
 console.log(me);
@@ -53,7 +53,7 @@ function add(a, b) {
     return a + b;
 }
 //!Function Expression
-const addExp = function (a, b) {
+const  addExp = function (a, b) {
     return a + b;
 }
 //!arrow function
@@ -61,3 +61,43 @@ const addArr = (a, b) => {
     return a + b;
 }
 
+//?This keyword
+// !calling it globally - point to windows object
+console.log(this);
+// !calling in a normal function - undefined (only in strict mode)
+const calcAge = function (birthYear) {
+    console.log(2021 - birthYear);
+    console.log(this);
+}
+
+calcAge(2000);
+//! arrow function use this keyword of its parent scope
+const calcAge2 = (birthYear) => {
+    console.log(2021 - birthYear);
+    console.log(this);//* points to the this keyword at parent scope
+}
+
+calcAge2(2005);
+//! this keyword point to the person object
+const person = {
+    firstName: "Gaurav",
+    lastName: "Sharma",
+    yearBorn: 2000,
+    calcAge: function () {
+        console.log(this);
+        console.log(2021 - this.yearBorn);
+    }
+};
+person.calcAge();
+//! This keyword always point ot the object that is calling the medhod see example below
+
+const jarvis = {
+    firstName: "jarvis",
+    lastName: "AI",
+    yearBorn: 1995
+}
+//! this process is called method borrowing
+jarvis.calcAge = person.calcAge;
+
+jarvis.calcAge();
+*/
