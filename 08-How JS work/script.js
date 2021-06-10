@@ -100,4 +100,18 @@ const jarvis = {
 jarvis.calcAge = person.calcAge;
 
 jarvis.calcAge();
+
+// ! Regular Function and Arrow Function
+const person = {
+    firstName: "Gaurav",
+    lastName: "Sharma",
+    yearBorn: 2000,
+    calcAge: function () {
+        console.log(this);
+        console.log(2021 - this.yearBorn);
+        const greet = () => console.log(`Hey ${this.firstName}`);
+        greet();
+    }
+};
+person.calcAge();
 */
