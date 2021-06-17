@@ -22,3 +22,33 @@ const restaurant = {
     },
   },
 };
+//! Destructuring of array
+
+const arr = [2, 3, 4];
+
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
+//! Dstructuring of arry
+const [x, y, z] = arr;
+
+console.log(x, y, z);
+
+//!getting elements from restaurant categories
+// const [first, second] = restaurant.categories;
+// console.log(first, second);
+
+//!changing secondary and main item in categories
+// skipped pizzeria from the categories
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+//!switching varibales without destructuring 
+//? First Method
+// const temp = main;
+// main = secondary;
+// secondary = temp;
+// console.log(main, secondary);
+
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
