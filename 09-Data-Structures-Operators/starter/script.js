@@ -6,6 +6,9 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function(starterIndex, mainIndex){
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
   openingHours: {
     thu: {
@@ -49,6 +52,24 @@ console.log(main, secondary);
 // main = secondary;
 // secondary = temp;
 // console.log(main, secondary);
-
+//? Second Mathod
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
+
+// console.log(restaurant.order(2,0));
+// Receiving 2 return value from a function
+const [starter, mainCourse] = restaurant.order(2,0);
+console.log(starter,mainCourse);
+
+const nested = [2,4,[5,6]];
+
+// const [i,,j] = nested;
+// console.log(i,j);
+
+// ! Doing destructuring inside of desecturing
+const [i,,[j,k]] = nested;
+console.log(i,j,k); // this gives ous seperate variables
+//! setting default values of varibles when we are setting them
+
+const [p=1,q=1,r=1] = [8,9];
+console.log(p,q,r);
