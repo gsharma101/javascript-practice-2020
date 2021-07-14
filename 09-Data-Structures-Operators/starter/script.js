@@ -31,37 +31,46 @@ const arr = [2, 3, 4];
 const a = arr[0];
 const b = arr[1];
 const c = arr[2];
+
 //! Dstructuring of array
 const [x, y, z] = arr;
 console.log(x, y, z);
+
 //!getting elements from restaurant categories
 // const [first, second] = restaurant.categories;
 // console.log(first, second);
 //!changing secondary and main item in categories
+
 // skipped pizzeria from the categories
 let [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
+
 //!switching varibales without destructuring 
 //? First Method
+
 // const temp = main;
 // main = secondary;
 // secondary = temp;
 // console.log(main, secondary);
+
 //? Second Mathod
+
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
 // console.log(restaurant.order(2,0));
+
 // Receiving 2 return value from a function
 const [starter, mainCourse] = restaurant.order(2,0);
 console.log(starter,mainCourse);
 const nested = [2,4,[5,6]];
+
 // const [i,,j] = nested;
 // console.log(i,j);
 // ! Doing destructuring inside of desecturing
 const [i,,[j,k]] = nested;
 console.log(i,j,k); // this gives ous seperate variables
-//! setting default values of varibles when we are setting them
 
+//! setting default values of varibles when we are setting them
 const [p=1,q=1,r=1] = [8,9];
 console.log(p,q,r);
 */
