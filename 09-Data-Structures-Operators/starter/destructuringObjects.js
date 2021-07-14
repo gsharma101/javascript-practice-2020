@@ -29,12 +29,12 @@ const restaurant = {
 // ? Destructuring objects in javascript
 const {name,openingHours,categories} = restaurant; // Where restaurent is an object
 console.log(name,openingHours,categories);
-// using different names instead of object names
 
+// using different names instead of object names
 const {name: restaurentName, openingHours: hours, categories: tags} = restaurant;
 console.log(restaurentName, hours, tags); 
-// Setting default values in objects
 
+// Setting default values in objects
 const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
 
