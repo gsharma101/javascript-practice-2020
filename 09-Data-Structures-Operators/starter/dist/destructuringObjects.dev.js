@@ -1,5 +1,11 @@
 'use strict';
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -26,6 +32,9 @@ var restaurant = {
         time = _ref$time === void 0 ? '20:00' : _ref$time,
         address = _ref.address;
     console.log("Order received! ".concat(this.starterMenu[starterIndex], " and ").concat(this.mainMenu[mainIndex], " will be devivered to ").concat(address, " at ").concat(time));
+  },
+  orderPasta: function orderPasta(ing1, ing2, ing3) {
+    console.log("Here is your declicious pasts with ".concat(ing1, ",").concat(ing2, "and ").concat(ing3));
   },
   openingHours: {
     thu: {
@@ -101,6 +110,40 @@ var mainMenuCoppy = _toConsumableArray(restaurant.mainMenu); //!Joining two arra
 var manu = [].concat(_toConsumableArray(restaurant.mainMenu), _toConsumableArray(restaurant.starterMenu));
 console.log(manu); // Interables:- Iterables are arrays,strings,maps,sets but not objects;
 
-var str = "Gaurav";
+var str = 'Gaurav';
 var letters = [].concat(_toConsumableArray(str), [' ', 'S.']);
-console.log(letters);
+console.log(letters); // ! function + desctructuring
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1"),
+//   prompt("Let's make pasta! Ingredient 2"),
+//   prompt("Let's make pasta! Ingredient 3"),
+// ];
+// restaurant.orderPasta(ingredients[0],ingredients[1],ingredients[2]);
+// restaurant.orderPasta(...ingredients);
+//! Itrating objects using spread operator
+//object
+
+var newRestaurant = _objectSpread({
+  foundedIn: 1998
+}, restaurant, {
+  founder: "Gaurav"
+});
+
+var restaurantCopy = _objectSpread({}, restaurant);
+
+restaurantCopy.name = "Sharma's Resaturent";
+console.log(restaurant.name);
+console.log(restaurantCopy.name);
+var game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [['Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski'], ['Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze']],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5
+  }
+};
