@@ -14,10 +14,16 @@ const restaurant = {
     starterIndex = 1,
     mainIndex = 0,
     time = '20:00',
-    address} 
-  ) {
+    address,
+  }) {
     console.log(
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be devivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your declicious pasts with ${ing1},${ing2}and ${ing3}`
     );
   },
 
@@ -77,12 +83,12 @@ restaurant.orderDelivery({
 //!Using spread ... operator
 
 //? Wuithout using spread operator
-const arr = [7,8,9];
-const badNewArr = [1,2, arr[0],arr[2],arr[3]];
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[2], arr[3]];
 console.log(badNewArr);
 
 // !With spread operator
-const goodNewArr = [1,2,...arr];
+const goodNewArr = [1, 2, ...arr];
 console.log(goodNewArr);
 
 //! Expanding restaurant object mainmenu array
@@ -93,11 +99,73 @@ console.log(newMenu);
 const mainMenuCoppy = [...restaurant.mainMenu];
 
 //!Joining two array one or more together
-const manu = [...restaurant.mainMenu,...restaurant.starterMenu];
+const manu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 console.log(manu);
 
 // Interables:- Iterables are arrays,strings,maps,sets but not objects;
 
-const str = "Gaurav";
-const letters = [...str,' ', 'S.'];
-console.log(letters)
+const str = 'Gaurav';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+
+// ! function + desctructuring
+
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1"),
+//   prompt("Let's make pasta! Ingredient 2"),
+//   prompt("Let's make pasta! Ingredient 3"),
+// ];
+
+// restaurant.orderPasta(ingredients[0],ingredients[1],ingredients[2]);
+// restaurant.orderPasta(...ingredients);
+
+//! Itrating objects using spread operator
+//object
+const newRestaurant = {foundedIn:1998,...restaurant, founder:"Gaurav"}
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = "Sharma's Resaturent";
+console.log(restaurant.name);
+console.log(restaurantCopy.name);
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
