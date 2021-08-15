@@ -121,9 +121,9 @@ console.log(letters);
 
 //! Itrating objects using spread operator
 //object
-const newRestaurant = {foundedIn:1998,...restaurant, founder:"Gaurav"}
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Gaurav' };
 
-const restaurantCopy = {...restaurant};
+const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Sharma's Resaturent";
 console.log(restaurant.name);
 console.log(restaurantCopy.name);
@@ -168,4 +168,26 @@ const game = {
     team2: 6.5,
   },
 };
-
+// 1.
+const [players1, players2] = game.players;
+console.log(players1, players2);
+// 2.
+const [gk, ...fieldPLayers] = players1;
+console.log(gk, fieldPLayers);
+// 3.
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+// 4.
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Periscic'];
+// 5.
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+// 6.
+const printGoals = function(...players){
+   console.log(players);
+   console.log(`${players.length} goals were scored`);
+}
+printGoals(...game.scored);
+// 7.
+team1 < team2 && console.log('Team 1 is more likely to win');

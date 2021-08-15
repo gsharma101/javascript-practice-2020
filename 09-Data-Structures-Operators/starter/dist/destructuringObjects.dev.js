@@ -1,5 +1,15 @@
 'use strict';
 
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -126,7 +136,7 @@ console.log(letters); // ! function + desctructuring
 var newRestaurant = _objectSpread({
   foundedIn: 1998
 }, restaurant, {
-  founder: "Gaurav"
+  founder: 'Gaurav'
 });
 
 var restaurantCopy = _objectSpread({}, restaurant);
@@ -146,4 +156,39 @@ var game = {
     x: 3.25,
     team2: 6.5
   }
+}; // 1.
+
+var _game$players = _slicedToArray(game.players, 2),
+    players1 = _game$players[0],
+    players2 = _game$players[1];
+
+console.log(players1, players2); // 2.
+
+var _players = _toArray(players1),
+    gk = _players[0],
+    fieldPLayers = _players.slice(1);
+
+console.log(gk, fieldPLayers); // 3.
+
+var allPlayers = [].concat(_toConsumableArray(players1), _toConsumableArray(players2));
+console.log(allPlayers); // 4.
+
+var players1Final = [].concat(_toConsumableArray(players1), ['Thiago', 'Coutinho', 'Periscic']); // 5.
+
+var _game$odds = game.odds,
+    team1 = _game$odds.team1,
+    draw = _game$odds.x,
+    team2 = _game$odds.team2; // 6.
+
+var printGoals = function printGoals() {
+  for (var _len = arguments.length, players = new Array(_len), _key = 0; _key < _len; _key++) {
+    players[_key] = arguments[_key];
+  }
+
+  console.log(players);
+  console.log("".concat(players.length, " goals were scored"));
 };
+
+printGoals.apply(void 0, _toConsumableArray(game.scored)); // 7.
+
+team1 < team2 && console.log('Team 1 is more likely to win');
