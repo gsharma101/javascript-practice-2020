@@ -35,7 +35,6 @@ const {
 } = restaurant;
 
 // ? Having default values to the property
-
 const {menu = [], starterMenu: starters = []} = restaurant;
 
 /*
