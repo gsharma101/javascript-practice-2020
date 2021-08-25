@@ -1,5 +1,4 @@
 'use strict';
-/*
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -73,4 +72,3 @@ console.log(i,j,k); // this gives ous seperate variables
 //! setting default values of varibles when we are setting them
 const [p=1,q=1,r=1] = [8,9];
 console.log(p,q,r);
-*/
