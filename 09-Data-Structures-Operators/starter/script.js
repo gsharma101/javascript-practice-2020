@@ -5,7 +5,7 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function(starterIndex, mainIndex){
+  order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -24,6 +24,21 @@ const restaurant = {
     },
   },
 };
+// !Destructuring of objects begins
+const { name, openingHours, categories } = restaurant;
+
+// ? Different names from the property names
+const {
+  name: restaurentName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+// ? Having default values to the property
+
+const {menu = [], starterMenu: starters = []} = restaurant;
+
+/*
 //! Destructuring of array
 
 const arr = [2, 3, 4];
@@ -31,7 +46,7 @@ const a = arr[0];
 const b = arr[1];
 const c = arr[2];
 
-//! Dstructuring of array above exaple can be written as
+//! Dstructuring of array above example can be written as
 const [x, y, z] = arr;
 console.log(x, y, z);
 
@@ -72,3 +87,4 @@ console.log(i,j,k); // this gives ous seperate variables
 //! setting default values of varibles when we are setting them
 const [p=1,q=1,r=1] = [8,9];
 console.log(p,q,r);
+*/
