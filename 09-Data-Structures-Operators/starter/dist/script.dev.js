@@ -37,7 +37,7 @@ var restaurant = {
 var arr = [2, 3, 4];
 var a = arr[0];
 var b = arr[1];
-var c = arr[2]; //! Dstructuring of array
+var c = arr[2]; //! Dstructuring of array above exaple can be written as
 
 var x = arr[0],
     y = arr[1],
