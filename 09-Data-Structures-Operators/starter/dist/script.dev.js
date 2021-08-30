@@ -1,42 +1,43 @@
 'use strict';
-const restaurant = {
+
+var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
+  order: function order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-
   openingHours: {
     thu: {
       open: 12,
-      close: 22,
+      close: 22
     },
     fri: {
       open: 11,
-      close: 23,
+      close: 23
     },
     sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-};
-// !Destructuring of objects begins
-const { name, openingHours, categories } = restaurant;
+      open: 0,
+      // Open 24 hours
+      close: 24
+    }
+  }
+}; // !Destructuring of objects begins
 
-// ? Different names from the property names
-const {
-  name: restaurentName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
+var name = restaurant.name,
+    openingHours = restaurant.openingHours,
+    categories = restaurant.categories; // ? Different names from the property names
 
-// ? Having default values to the property
-const {menu = [], starterMenu: starters = []} = restaurant;
+var restaurentName = restaurant.name,
+    hours = restaurant.openingHours,
+    tags = restaurant.categories; // ? Having default values to the property
 
+var _restaurant$menu = restaurant.menu,
+    menu = _restaurant$menu === void 0 ? [] : _restaurant$menu,
+    _restaurant$starterMe = restaurant.starterMenu,
+    starters = _restaurant$starterMe === void 0 ? [] : _restaurant$starterMe;
 /*
 //! Destructuring of array
 
