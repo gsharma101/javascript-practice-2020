@@ -9,6 +9,16 @@ var restaurant = {
   order: function order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  orderDelivery: function orderDelivery(_ref) {
+    var _ref$starterIndex = _ref.starterIndex,
+        starterIndex = _ref$starterIndex === void 0 ? 1 : _ref$starterIndex,
+        _ref$mainIndex = _ref.mainIndex,
+        mainIndex = _ref$mainIndex === void 0 ? 0 : _ref$mainIndex,
+        _ref$time = _ref.time,
+        time = _ref$time === void 0 ? '20:00' : _ref$time,
+        address = _ref.address;
+    console.log("Order received! ".concat(this.starterMenu[starterIndex], " and ").concat(this.mainMenu[mainIndex], " will be delivered to ").concat(address, " at ").concat(time));
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -26,18 +36,46 @@ var restaurant = {
   }
 }; // !Destructuring of objects begins
 
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2
+});
+restaurant.orderDelivery({
+  address: 'Via del Sole, 21',
+  starterIndex: 1
+});
 var name = restaurant.name,
     openingHours = restaurant.openingHours,
-    categories = restaurant.categories; // ? Different names from the property names
-
-var restaurentName = restaurant.name,
+    categories = restaurant.categories;
+console.log(name, openingHours, categories);
+var restaurantName = restaurant.name,
     hours = restaurant.openingHours,
-    tags = restaurant.categories; // ? Having default values to the property
+    tags = restaurant.categories;
+console.log(restaurantName, hours, tags); // Default values
 
 var _restaurant$menu = restaurant.menu,
     menu = _restaurant$menu === void 0 ? [] : _restaurant$menu,
     _restaurant$starterMe = restaurant.starterMenu,
     starters = _restaurant$starterMe === void 0 ? [] : _restaurant$starterMe;
+console.log(menu, starters); // Mutating variables
+
+var a = 111;
+var b = 999;
+var obj = {
+  a: 23,
+  b: 7,
+  c: 14
+};
+a = obj.a;
+b = obj.b;
+console.log(a, b); // Nested objects
+
+var _openingHours$fri = openingHours.fri,
+    o = _openingHours$fri.open,
+    c = _openingHours$fri.close;
+console.log(o, c);
 /*
 //! Destructuring of array
 
