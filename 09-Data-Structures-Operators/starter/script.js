@@ -31,9 +31,10 @@ const restaurant = {
     },
   }
 };
+// ! Spread Operator
+
+/*
 // !Destructuring of objects begins
-
-
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via del Sole, 21',
@@ -73,7 +74,6 @@ const {
 } = openingHours;
 console.log(o, c);
 
-/*
 //! Destructuring of array
 
 const arr = [2, 3, 4];

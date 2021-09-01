@@ -34,49 +34,49 @@ var restaurant = {
       close: 24
     }
   }
-}; // !Destructuring of objects begins
+}; // ! Spread Operator
 
+/*
+// !Destructuring of objects begins
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via del Sole, 21',
   mainIndex: 2,
-  starterIndex: 2
+  starterIndex: 2,
 });
+
 restaurant.orderDelivery({
   address: 'Via del Sole, 21',
-  starterIndex: 1
+  starterIndex: 1,
 });
-var name = restaurant.name,
-    openingHours = restaurant.openingHours,
-    categories = restaurant.categories;
+
+const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
-var restaurantName = restaurant.name,
-    hours = restaurant.openingHours,
-    tags = restaurant.categories;
-console.log(restaurantName, hours, tags); // Default values
 
-var _restaurant$menu = restaurant.menu,
-    menu = _restaurant$menu === void 0 ? [] : _restaurant$menu,
-    _restaurant$starterMe = restaurant.starterMenu,
-    starters = _restaurant$starterMe === void 0 ? [] : _restaurant$starterMe;
-console.log(menu, starters); // Mutating variables
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
-var a = 111;
-var b = 999;
-var obj = {
-  a: 23,
-  b: 7,
-  c: 14
-};
-a = obj.a;
-b = obj.b;
-console.log(a, b); // Nested objects
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
-var _openingHours$fri = openingHours.fri,
-    o = _openingHours$fri.open,
-    c = _openingHours$fri.close;
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
 console.log(o, c);
-/*
+
 //! Destructuring of array
 
 const arr = [2, 3, 4];
