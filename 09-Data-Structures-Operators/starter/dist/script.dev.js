@@ -1,5 +1,19 @@
 'use strict';
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -19,6 +33,9 @@ var restaurant = {
         address = _ref.address;
     console.log("Order received! ".concat(this.starterMenu[starterIndex], " and ").concat(this.mainMenu[mainIndex], " will be delivered to ").concat(address, " at ").concat(time));
   },
+  orderPasta: function orderPasta(ing1, ing2, ing3) {
+    console.log("Here is your delicious pasta with ".concat(ing1, ", ").concat(ing2, " and ").concat(ing3));
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -34,49 +51,89 @@ var restaurant = {
       close: 24
     }
   }
-}; // !Destructuring of objects begins
+}; // ! Spread Operator
 
+var arr = [7, 8, 9];
+var badNewArr = [1, 2, arr[1], arr[2]];
+console.log(badNewArr); // ? Using spread operator
+
+var newArr = [1, 2].concat(arr);
+console.log(newArr);
+var newMenu = [].concat(_toConsumableArray(restaurant.mainMenu), ['Gnocci']); //Completely a new array
+
+console.log(newMenu); // Coppy of array
+
+var mainMenuCoppy = _toConsumableArray(restaurant.mainMenu); // Joining 2 arrays
+
+
+var menu = [].concat(_toConsumableArray(restaurant.mainMenu), _toConsumableArray(restaurant.starterMenu));
+console.log(menu); // Iterables:
+
+var str = 'Jonas';
+var letters = [].concat(_toConsumableArray(str), [' ', 'S.']);
+console.log(letters);
+var ingridients = [// prompt("Let's make pasta! Ingredient 1?"),
+  // prompt("Let's make pasta! Ingredient 2?"),
+  // prompt("Let's make pasta! Ingredient 3?"),
+];
+console.log(ingridients); // Order pasta function
+// restaurant.orderPasta(ingridients[0],ingridients[1],ingridients[3]); old way 
+
+restaurant.orderPasta.apply(restaurant, ingridients); // using spread operator with objects
+
+var newRestaurant = _objectSpread({
+  foundingYear: 1998
+}, restaurant, {
+  founder: 'Gaurav Sharma'
+});
+
+console.log(newRestaurant); // Copy of object
+
+var restaurentCopy = _objectSpread({}, restaurant);
+
+restaurentCopy.name = "Sharmas Restaurent";
+console.log(restaurentCopy);
+/*
+// !Destructuring of objects begins
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via del Sole, 21',
   mainIndex: 2,
-  starterIndex: 2
+  starterIndex: 2,
 });
+
 restaurant.orderDelivery({
   address: 'Via del Sole, 21',
-  starterIndex: 1
+  starterIndex: 1,
 });
-var name = restaurant.name,
-    openingHours = restaurant.openingHours,
-    categories = restaurant.categories;
+
+const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
-var restaurantName = restaurant.name,
-    hours = restaurant.openingHours,
-    tags = restaurant.categories;
-console.log(restaurantName, hours, tags); // Default values
 
-var _restaurant$menu = restaurant.menu,
-    menu = _restaurant$menu === void 0 ? [] : _restaurant$menu,
-    _restaurant$starterMe = restaurant.starterMenu,
-    starters = _restaurant$starterMe === void 0 ? [] : _restaurant$starterMe;
-console.log(menu, starters); // Mutating variables
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
-var a = 111;
-var b = 999;
-var obj = {
-  a: 23,
-  b: 7,
-  c: 14
-};
-a = obj.a;
-b = obj.b;
-console.log(a, b); // Nested objects
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
-var _openingHours$fri = openingHours.fri,
-    o = _openingHours$fri.open,
-    c = _openingHours$fri.close;
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
 console.log(o, c);
-/*
+
 //! Destructuring of array
 
 const arr = [2, 3, 4];

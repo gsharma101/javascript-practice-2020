@@ -14,8 +14,11 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
-
-
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -29,11 +32,48 @@ const restaurant = {
       open: 0, // Open 24 hours
       close: 24,
     },
-  }
+  },
 };
+// ! Spread Operator
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[1], arr[2]];
+console.log(badNewArr);
+// ? Using spread operator
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci']; //Completely a new array
+console.log(newMenu);
+
+// Coppy of array
+const mainMenuCoppy = [...restaurant.mainMenu];
+// Joining 2 arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+// Iterables:
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+
+const ingridients = [
+  // prompt("Let's make pasta! Ingredient 1?"),
+  // prompt("Let's make pasta! Ingredient 2?"),
+  // prompt("Let's make pasta! Ingredient 3?"),
+];
+console.log(ingridients);
+// Order pasta function
+// restaurant.orderPasta(ingridients[0],ingridients[1],ingridients[3]); old way 
+restaurant.orderPasta(...ingridients);
+// using spread operator with objects
+const newRestaurant = {foundingYear:1998,...restaurant, founder:'Gaurav Sharma'};
+
+console.log(newRestaurant);
+// Copy of object
+const restaurentCopy = {...restaurant};
+restaurentCopy.name = "Sharmas Restaurent";
+console.log(restaurentCopy);
+/*
 // !Destructuring of objects begins
-
-
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via del Sole, 21',
@@ -73,7 +113,6 @@ const {
 } = openingHours;
 console.log(o, c);
 
-/*
 //! Destructuring of array
 
 const arr = [2, 3, 4];
