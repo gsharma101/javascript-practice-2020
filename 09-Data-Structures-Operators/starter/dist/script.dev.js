@@ -1,19 +1,5 @@
 'use strict';
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -51,49 +37,48 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! Spread Operator
+}; // !Rest Pattern
 
-var arr = [7, 8, 9];
-var badNewArr = [1, 2, arr[1], arr[2]];
-console.log(badNewArr); // ? Using spread operator
-
-var newArr = [1, 2].concat(arr);
+/*
+// ! Spread Operator
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[1], arr[2]];
+console.log(badNewArr);
+// ? Using spread operator
+const newArr = [1, 2, ...arr];
 console.log(newArr);
-var newMenu = [].concat(_toConsumableArray(restaurant.mainMenu), ['Gnocci']); //Completely a new array
 
-console.log(newMenu); // Coppy of array
+const newMenu = [...restaurant.mainMenu, 'Gnocci']; //Completely a new array
+console.log(newMenu);
 
-var mainMenuCoppy = _toConsumableArray(restaurant.mainMenu); // Joining 2 arrays
-
-
-var menu = [].concat(_toConsumableArray(restaurant.mainMenu), _toConsumableArray(restaurant.starterMenu));
-console.log(menu); // Iterables:
-
-var str = 'Jonas';
-var letters = [].concat(_toConsumableArray(str), [' ', 'S.']);
+// Coppy of array
+const mainMenuCoppy = [...restaurant.mainMenu];
+// Joining 2 arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+// Iterables:
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
 console.log(letters);
-var ingridients = [// prompt("Let's make pasta! Ingredient 1?"),
+
+const ingridients = [
+  // prompt("Let's make pasta! Ingredient 1?"),
   // prompt("Let's make pasta! Ingredient 2?"),
   // prompt("Let's make pasta! Ingredient 3?"),
 ];
-console.log(ingridients); // Order pasta function
+console.log(ingridients);
+// Order pasta function
 // restaurant.orderPasta(ingridients[0],ingridients[1],ingridients[3]); old way 
+restaurant.orderPasta(...ingridients);
+// using spread operator with objects
+const newRestaurant = {foundingYear:1998,...restaurant, founder:'Gaurav Sharma'};
 
-restaurant.orderPasta.apply(restaurant, ingridients); // using spread operator with objects
-
-var newRestaurant = _objectSpread({
-  foundingYear: 1998
-}, restaurant, {
-  founder: 'Gaurav Sharma'
-});
-
-console.log(newRestaurant); // Copy of object
-
-var restaurentCopy = _objectSpread({}, restaurant);
-
+console.log(newRestaurant);
+// Copy of object
+const restaurentCopy = {...restaurant};
 restaurentCopy.name = "Sharmas Restaurent";
 console.log(restaurentCopy);
-/*
+
 // !Destructuring of objects begins
 restaurant.orderDelivery({
   time: '22:30',

@@ -34,6 +34,9 @@ const restaurant = {
     },
   },
 };
+// !Rest Pattern
+
+/*
 // ! Spread Operator
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[1], arr[2]];
@@ -72,7 +75,7 @@ console.log(newRestaurant);
 const restaurentCopy = {...restaurant};
 restaurentCopy.name = "Sharmas Restaurent";
 console.log(restaurentCopy);
-/*
+
 // !Destructuring of objects begins
 restaurant.orderDelivery({
   time: '22:30',
