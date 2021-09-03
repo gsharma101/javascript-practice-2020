@@ -1,5 +1,17 @@
 'use strict';
 
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -22,6 +34,15 @@ var restaurant = {
   orderPasta: function orderPasta(ing1, ing2, ing3) {
     console.log("Here is your delicious pasta with ".concat(ing1, ", ").concat(ing2, " and ").concat(ing3));
   },
+  orderPizza: function orderPizza(mainIngredient) {
+    console.log(mainIngredient);
+
+    for (var _len = arguments.length, otherIngredients = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      otherIngredients[_key - 1] = arguments[_key];
+    }
+
+    console.log(otherIngredients);
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -37,8 +58,47 @@ var restaurant = {
       close: 24
     }
   }
-}; // !Rest Pattern
+}; // !Rest Pattern Destructuring
+// ? This is SPREAD, because it is in the RIGHT side of the =
 
+var arr = [1, 2].concat([3, 4]); // ? This is REST, because it is in the LEFT side of the =
+
+var a = 1,
+    b = 2,
+    others = [3, 4, 5];
+console.log(a, b, others);
+
+var _ref2 = [].concat(_toConsumableArray(restaurant.mainMenu), _toConsumableArray(restaurant.starterMenu)),
+    pizza = _ref2[0],
+    risotto = _ref2[2],
+    otherFood = _ref2.slice(3);
+
+console.log(pizza, risotto, otherFood); //Objects
+
+var _restaurant$openingHo = restaurant.openingHours,
+    sat = _restaurant$openingHo.sat,
+    weekdays = _objectWithoutProperties(_restaurant$openingHo, ["sat"]);
+
+console.log(weekdays); // ? Functions
+
+var add = function add() {
+  var sum = 0;
+
+  for (var i = 0; i < arguments.length; i++) {
+    sum += i < 0 || arguments.length <= i ? undefined : arguments[i];
+  }
+
+  console.log(sum);
+}; // Any arbitary amount of arguments should work for this function
+
+
+add(2, 3);
+add(5, 3, 7, 2); // Another example
+
+var x = [23, 5, 7];
+add.apply(void 0, x);
+restaurant.orderPizza('mashroom', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushroom');
 /*
 // ! Spread Operator
 const arr = [7, 8, 9];
