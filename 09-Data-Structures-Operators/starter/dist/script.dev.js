@@ -1,17 +1,5 @@
 'use strict';
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -58,48 +46,52 @@ var restaurant = {
       close: 24
     }
   }
-}; // !Rest Pattern Destructuring
-// ? This is SPREAD, because it is in the RIGHT side of the =
+}; // ! Use ANY data type, return ANY data type, short-circuiting
+// ? Short circuiting using || operator
 
-var arr = [1, 2].concat([3, 4]); // ? This is REST, because it is in the LEFT side of the =
+console.log(3 || 'Gaurav');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+restaurant.numGuests = 23; // 
 
-var a = 1,
-    b = 2,
-    others = [3, 4, 5];
-console.log(a, b, others);
-
-var _ref2 = [].concat(_toConsumableArray(restaurant.mainMenu), _toConsumableArray(restaurant.starterMenu)),
-    pizza = _ref2[0],
-    risotto = _ref2[2],
-    otherFood = _ref2.slice(3);
-
-console.log(pizza, risotto, otherFood); //Objects
-
-var _restaurant$openingHo = restaurant.openingHours,
-    sat = _restaurant$openingHo.sat,
-    weekdays = _objectWithoutProperties(_restaurant$openingHo, ["sat"]);
-
-console.log(weekdays); // ? Functions
-
-var add = function add() {
-  var sum = 0;
-
-  for (var i = 0; i < arguments.length; i++) {
-    sum += i < 0 || arguments.length <= i ? undefined : arguments[i];
-  }
-
-  console.log(sum);
-}; // Any arbitary amount of arguments should work for this function
-
-
-add(2, 3);
-add(5, 3, 7, 2); // Another example
-
-var x = [23, 5, 7];
-add.apply(void 0, x);
-restaurant.orderPizza('mashroom', 'onion', 'olives', 'spinach');
-restaurant.orderPizza('mushroom');
+var guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
 /*
+// !Rest Pattern Destructuring
+// ? This is SPREAD, because it is in the RIGHT side of the =
+const arr = [1,2,...[3,4]];
+// ? This is REST, because it is in the LEFT side of the =
+const [a,b,...others] = [1,2,3,4,5];
+console.log(a,b,others);
+
+const [pizza, ,risotto,...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza,risotto,otherFood);
+
+//Objects
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+// ? Functions
+const add = function(...numbers){
+  let sum = 0;
+  for(let i = 0; i<numbers.length; i++)
+  {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+// Any arbitary amount of arguments should work for this function
+add(2,3);
+add(5,3,7,2);
+// Another example
+const x = [23,5,7];
+add(...x);
+
+restaurant.orderPizza('mashroom','onion','olives','spinach');
+restaurant.orderPizza('mushroom');
+
 // ! Spread Operator
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[1], arr[2]];
