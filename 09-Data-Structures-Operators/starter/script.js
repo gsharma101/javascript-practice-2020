@@ -38,6 +38,20 @@ const restaurant = {
     },
   },
 };
+// ! Use ANY data type, return ANY data type, short-circuiting
+// ? Short circuiting using || operator
+console.log(3 || 'Gaurav');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 ||''||'Hello'||23||null);
+restaurant.numGuests = 23;
+// 
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+/*
 // !Rest Pattern Destructuring
 // ? This is SPREAD, because it is in the RIGHT side of the =
 const arr = [1,2,...[3,4]];
@@ -71,7 +85,6 @@ add(...x);
 restaurant.orderPizza('mashroom','onion','olives','spinach');
 restaurant.orderPizza('mushroom');
 
-/*
 // ! Spread Operator
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[1], arr[2]];
