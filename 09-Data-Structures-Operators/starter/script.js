@@ -38,7 +38,14 @@ const restaurant = {
     },
   },
 };
-
+// !Nullish coalesing operator
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+// Nullish: null and undefined (Not 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect); 
+/*
 console.log('----------OR------------');
 // ! Use ANY data type, return ANY data type, short-circuiting
 // ? Short circuiting using || operator
@@ -64,7 +71,7 @@ if(restaurant.orderPizza){
 }
 // above example with 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms','spinach');
-/*
+
 // !Rest Pattern Destructuring
 // ? This is SPREAD, because it is in the RIGHT side of the =
 const arr = [1,2,...[3,4]];
