@@ -46,7 +46,8 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! Use ANY data type, return ANY data type, short-circuiting
+};
+console.log('----------OR------------'); // ! Use ANY data type, return ANY data type, short-circuiting
 // ? Short circuiting using || operator
 
 console.log(3 || 'Gaurav');
@@ -54,10 +55,22 @@ console.log('' || 'Jonas');
 console.log(true || 0);
 console.log(undefined || null);
 console.log(undefined || 0 || '' || 'Hello' || 23 || null);
-restaurant.numGuests = 23; // 
-
+restaurant.numGuests = 23;
 var guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 console.log(guests1);
+var guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+console.log('----------AND-----------');
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+console.log('Hello' && 23 && null && 'jonas'); // Practical example
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushroooms', 'spinach');
+} // above example with 
+
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 /*
 // !Rest Pattern Destructuring
 // ? This is SPREAD, because it is in the RIGHT side of the =
