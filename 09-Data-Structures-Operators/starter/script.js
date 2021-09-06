@@ -19,7 +19,7 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
-  orderPizza(mainIngredient,...otherIngredients){
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -38,6 +38,76 @@ const restaurant = {
     },
   },
 };
+// ! First Coding Challenge
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+// ? Challenge starts
+// 1
+const [players1, players2] = game.players;
+console.log(players1, players2);
+// 2
+const [gk, ...fieldPLayers] = players1;
+console.log(gk, fieldPLayers);
+// 3
+const allPlayers = [...players1, ...players2];
+// 4
+const players1Final = [players1, 'Thiaho', 'Coutinho', 'Periscic'];
+// 5 Nested destructuring of odds property
+const {
+  odds: { team1, X: draw, team2 },
+} = game;
+console.log(team2,draw,team2);
+// 6
+const printGoals = function(...players){
+  console.log(`${players.length} goals were scored`);
+}
+
+printGoals('Devies','Miller','Lewandowski','kimmich');
+printGoals('Devies','Miller');
+printGoals(...game.score);
+
+// 7
+team1 < team2 && console.log(`Team 1 is more likeely to win`);
+team1 > team2 && console.log(`Team 2 is more likeely to win`);
+/*
 // !Nullish coalesing operator
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
@@ -45,7 +115,7 @@ console.log(guests);
 // Nullish: null and undefined (Not 0 or '')
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect); 
-/*
+
 console.log('----------OR------------');
 // ! Use ANY data type, return ANY data type, short-circuiting
 // ? Short circuiting using || operator

@@ -1,5 +1,23 @@
 'use strict';
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -46,32 +64,90 @@ var restaurant = {
       close: 24
     }
   }
-};
-console.log('----------OR------------'); // ! Use ANY data type, return ANY data type, short-circuiting
-// ? Short circuiting using || operator
+}; // ! First Coding Challenge
 
+var game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [['Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski'], ['Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze']],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5
+  }
+}; // ? Challenge starts
+// 1
+
+var _game$players = _slicedToArray(game.players, 2),
+    players1 = _game$players[0],
+    players2 = _game$players[1];
+
+console.log(players1, players2); // 2
+
+var _players = _toArray(players1),
+    gk = _players[0],
+    fieldPLayers = _players.slice(1);
+
+console.log(gk, fieldPLayers); // 3
+
+var allPlayers = [].concat(_toConsumableArray(players1), _toConsumableArray(players2)); // 4
+
+var players1Final = [players1, 'Thiaho', 'Coutinho', 'Periscic']; // 5 Nested destructuring of odds property
+
+var _game$odds = game.odds,
+    team1 = _game$odds.team1,
+    draw = _game$odds.X,
+    team2 = _game$odds.team2;
+console.log(team2, draw, team2); // 6
+
+var printGoals = function printGoals() {
+  console.log("".concat(arguments.length, " goals were scored"));
+};
+
+printGoals('Devies', 'Miller', 'Lewandowski', 'kimmich');
+printGoals('Devies', 'Miller');
+printGoals.apply(void 0, _toConsumableArray(game.score)); // 7
+
+team1 < team2 && console.log("Team 1 is more likeely to win");
+team1 > team2 && console.log("Team 2 is more likeely to win");
+/*
+// !Nullish coalesing operator
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+// Nullish: null and undefined (Not 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect); 
+
+console.log('----------OR------------');
+// ! Use ANY data type, return ANY data type, short-circuiting
+// ? Short circuiting using || operator
 console.log(3 || 'Gaurav');
 console.log('' || 'Jonas');
 console.log(true || 0);
 console.log(undefined || null);
-console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+console.log(undefined || 0 ||''||'Hello'||23||null);
 restaurant.numGuests = 23;
-var guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 console.log(guests1);
-var guests2 = restaurant.numGuests || 10;
+
+const guests2 = restaurant.numGuests || 10;
 console.log(guests2);
 console.log('----------AND-----------');
 console.log(0 && 'Jonas');
 console.log(7 && 'Jonas');
-console.log('Hello' && 23 && null && 'jonas'); // Practical example
+console.log('Hello'&& 23 && null && 'jonas');
+// Practical example
+if(restaurant.orderPizza){
+  restaurant.orderPizza('mushroooms','spinach');
+}
+// above example with 
+restaurant.orderPizza && restaurant.orderPizza('mushrooms','spinach');
 
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('mushroooms', 'spinach');
-} // above example with 
-
-
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
-/*
 // !Rest Pattern Destructuring
 // ? This is SPREAD, because it is in the RIGHT side of the =
 const arr = [1,2,...[3,4]];
