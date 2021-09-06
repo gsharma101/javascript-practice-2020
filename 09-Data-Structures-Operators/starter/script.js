@@ -38,6 +38,22 @@ const restaurant = {
     },
   },
 };
+// ! For-of-loop
+const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
+
+for (const item of menu) {
+  console.log(item);
+}
+//? Old way
+for (const item of menu.entries()){
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+// ? Using destructuring
+console.log('XXXXXXXXXX Uing Destructuring XXXXXXXXXXX');
+for (const [i,el] of menu.entries()){
+  console.log(`${i + 1}: ${el}`);
+}
+/*
 // ! First Coding Challenge
 const game = {
   team1: 'Bayern Munich',
@@ -107,7 +123,7 @@ printGoals(...game.score);
 // 7
 team1 < team2 && console.log(`Team 1 is more likeely to win`);
 team1 > team2 && console.log(`Team 2 is more likeely to win`);
-/*
+
 // !Nullish coalesing operator
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
