@@ -38,6 +38,12 @@ const restaurant = {
     },
   },
 };
+//! Looping Objects Object Keys,Values and Entries
+//? Looping over properties name
+for (const day of Object.keys(openingHours)){
+  console.log(day);
+}
+/*
 // ! For-of-loop
 const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
 
@@ -53,7 +59,7 @@ console.log('XXXXXXXXXX Uing Destructuring XXXXXXXXXXX');
 for (const [i,el] of menu.entries()){
   console.log(`${i + 1}: ${el}`);
 }
-/*
+
 // ! First Coding Challenge
 const game = {
   team1: 'Bayern Munich',
