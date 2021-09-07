@@ -1,23 +1,5 @@
 'use strict';
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -64,56 +46,100 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! First Coding Challenge
+}; //! Looping Objects Object Keys,Values and Entries
+//? Looping over properties name
 
-var game = {
+for (var _i = 0, _Object$keys = Object.keys(openingHours); _i < _Object$keys.length; _i++) {
+  var day = _Object$keys[_i];
+  console.log(day);
+}
+/*
+// ! For-of-loop
+const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
+
+for (const item of menu) {
+  console.log(item);
+}
+//? Old way
+for (const item of menu.entries()){
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+// ? Using destructuring
+console.log('XXXXXXXXXX Uing Destructuring XXXXXXXXXXX');
+for (const [i,el] of menu.entries()){
+  console.log(`${i + 1}: ${el}`);
+}
+
+// ! First Coding Challenge
+const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
-  players: [['Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski'], ['Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze']],
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
   score: '4:0',
   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
   date: 'Nov 9th, 2037',
   odds: {
     team1: 1.33,
     x: 3.25,
-    team2: 6.5
-  }
-}; // ? Challenge starts
-// 1
-
-var _game$players = _slicedToArray(game.players, 2),
-    players1 = _game$players[0],
-    players2 = _game$players[1];
-
-console.log(players1, players2); // 2
-
-var _players = _toArray(players1),
-    gk = _players[0],
-    fieldPLayers = _players.slice(1);
-
-console.log(gk, fieldPLayers); // 3
-
-var allPlayers = [].concat(_toConsumableArray(players1), _toConsumableArray(players2)); // 4
-
-var players1Final = [players1, 'Thiaho', 'Coutinho', 'Periscic']; // 5 Nested destructuring of odds property
-
-var _game$odds = game.odds,
-    team1 = _game$odds.team1,
-    draw = _game$odds.X,
-    team2 = _game$odds.team2;
-console.log(team2, draw, team2); // 6
-
-var printGoals = function printGoals() {
-  console.log("".concat(arguments.length, " goals were scored"));
+    team2: 6.5,
+  },
 };
+// ? Challenge starts
+// 1
+const [players1, players2] = game.players;
+console.log(players1, players2);
+// 2
+const [gk, ...fieldPLayers] = players1;
+console.log(gk, fieldPLayers);
+// 3
+const allPlayers = [...players1, ...players2];
+// 4
+const players1Final = [players1, 'Thiaho', 'Coutinho', 'Periscic'];
+// 5 Nested destructuring of odds property
+const {
+  odds: { team1, X: draw, team2 },
+} = game;
+console.log(team2,draw,team2);
+// 6
+const printGoals = function(...players){
+  console.log(`${players.length} goals were scored`);
+}
 
-printGoals('Devies', 'Miller', 'Lewandowski', 'kimmich');
-printGoals('Devies', 'Miller');
-printGoals.apply(void 0, _toConsumableArray(game.score)); // 7
+printGoals('Devies','Miller','Lewandowski','kimmich');
+printGoals('Devies','Miller');
+printGoals(...game.score);
 
-team1 < team2 && console.log("Team 1 is more likeely to win");
-team1 > team2 && console.log("Team 2 is more likeely to win");
-/*
+// 7
+team1 < team2 && console.log(`Team 1 is more likeely to win`);
+team1 > team2 && console.log(`Team 2 is more likeely to win`);
+
 // !Nullish coalesing operator
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
