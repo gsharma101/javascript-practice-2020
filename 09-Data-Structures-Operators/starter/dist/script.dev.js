@@ -49,6 +49,9 @@ var restaurant = {
 }; //! Looping Objects Object Keys,Values and Entries
 //? Looping over properties name
 
+var properties = Object.keys(openingHours);
+console.log(properties);
+
 for (var _i = 0, _Object$keys = Object.keys(openingHours); _i < _Object$keys.length; _i++) {
   var day = _Object$keys[_i];
   console.log(day);

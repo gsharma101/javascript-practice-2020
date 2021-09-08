@@ -40,8 +40,10 @@ const restaurant = {
 };
 //! Looping Objects Object Keys,Values and Entries
 //? Looping over properties name
+const properties = Object.keys(openingHours);
+console.log(properties);
 for (const day of Object.keys(openingHours)){
-  console.log(day);
+  console.log(day); 
 }
 /*
 // ! For-of-loop
