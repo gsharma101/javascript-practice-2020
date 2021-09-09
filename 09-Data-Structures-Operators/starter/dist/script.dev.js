@@ -1,5 +1,13 @@
 'use strict';
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -49,12 +57,35 @@ var restaurant = {
 }; //! Looping Objects Object Keys,Values and Entries
 //? Looping over properties name
 
-var properties = Object.keys(openingHours);
+var properties = Object.keys(restaurant.openingHours);
 console.log(properties);
+var openStr = "We are open on ".concat(properties.length, " days");
 
-for (var _i = 0, _Object$keys = Object.keys(openingHours); _i < _Object$keys.length; _i++) {
-  var day = _Object$keys[_i];
-  console.log(day);
+for (var _i = 0, _properties = properties; _i < _properties.length; _i++) {
+  var day = _properties[_i];
+  openStr += " ".concat(day, ",");
+}
+
+console.log(openStr); // ? Old one
+// for (const day of Object.keys(openingHours)){
+//   console.log(day); 
+// }
+// ! Looping over properties values
+
+var values = Object.values(restaurant.openingHours);
+console.log(values); // ! Looping over entries of the object
+
+var entries = Object.entries(restaurant.openingHours);
+console.log(entries); // ? [key,values]
+
+for (var _i2 = 0, _entries = entries; _i2 < _entries.length; _i2++) {
+  var _entries$_i = _slicedToArray(_entries[_i2], 2),
+      keys = _entries$_i[0],
+      _entries$_i$ = _entries$_i[1],
+      open = _entries$_i$.open,
+      close = _entries$_i$.close;
+
+  console.log("On ".concat(keys, " we open at ").concat(open, " and close at ").concat(close));
 }
 /*
 // ! For-of-loop
