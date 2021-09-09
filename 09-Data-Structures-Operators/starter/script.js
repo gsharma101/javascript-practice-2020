@@ -38,12 +38,33 @@ const restaurant = {
     },
   },
 };
+
 //! Looping Objects Object Keys,Values and Entries
 //? Looping over properties name
-const properties = Object.keys(openingHours);
+const properties = Object.keys(restaurant.openingHours);
 console.log(properties);
-for (const day of Object.keys(openingHours)){
-  console.log(day); 
+
+let openStr = `We are open on ${properties.length} days`;
+
+for(const day of properties){
+  openStr += ` ${day},`;
+}
+console.log(openStr);
+// ? Old one
+// for (const day of Object.keys(openingHours)){
+//   console.log(day); 
+// }
+
+// ! Looping over properties values
+const values = Object.values(restaurant.openingHours);
+console.log(values);
+
+// ! Looping over entries of the object
+const entries = Object.entries(restaurant.openingHours);
+console.log(entries);
+// ? [key,values]
+for ( const [keys, {open,close} ] of entries){
+  console.log(`On ${keys} we open at ${open} and close at ${close}`);
 }
 /*
 // ! For-of-loop
