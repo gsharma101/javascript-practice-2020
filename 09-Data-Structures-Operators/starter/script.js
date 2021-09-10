@@ -38,7 +38,65 @@ const restaurant = {
     },
   },
 };
-
+// ! Codding Challenge 2
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+// 1 looping through array
+for(const [index,value] of game.scored.entries()){
+  console.log(`Goal ${index}: ${value}`);
+}
+// 2 Calculating the average odd
+let odds = Object.values(game.odds);
+let average = 0;
+for(const odd of odds){
+  average += odd;
+}
+average /= odds.length;
+console.log(average);
+// 3 To print the comtent og the object to the console.
+for( const [team,odd] of Object.entries(game.odds)){
+    const teamString = team === 'x' ? 'draw' : `victory ${game[team]}`;
+    console.log(`Odd of ${teamString} ${odd}`);
+}
+/*
 //! Looping Objects Object Keys,Values and Entries
 //? Looping over properties name
 const properties = Object.keys(restaurant.openingHours);
@@ -66,7 +124,7 @@ console.log(entries);
 for ( const [keys, {open,close} ] of entries){
   console.log(`On ${keys} we open at ${open} and close at ${close}`);
 }
-/*
+
 // ! For-of-loop
 const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
 
