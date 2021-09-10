@@ -54,40 +54,98 @@ var restaurant = {
       close: 24
     }
   }
-}; //! Looping Objects Object Keys,Values and Entries
-//? Looping over properties name
+}; // ! Codding Challenge 2
 
-var properties = Object.keys(restaurant.openingHours);
-console.log(properties);
-var openStr = "We are open on ".concat(properties.length, " days");
+var game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [['Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski'], ['Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze']],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5
+  }
+}; // 1 looping through array
 
-for (var _i = 0, _properties = properties; _i < _properties.length; _i++) {
-  var day = _properties[_i];
-  openStr += " ".concat(day, ",");
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
+
+try {
+  for (var _iterator = game.scored.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var _step$value = _slicedToArray(_step.value, 2),
+        index = _step$value[0],
+        value = _step$value[1];
+
+    console.log("Goal ".concat(index, ": ").concat(value));
+  } // 2 Calculating the average odd
+
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+      _iterator["return"]();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
 }
 
-console.log(openStr); // ? Old one
+var odds = Object.values(game.odds);
+var average = 0;
+
+for (var _i = 0, _odds = odds; _i < _odds.length; _i++) {
+  var odd = _odds[_i];
+  average += odd;
+}
+
+average /= odds.length;
+console.log(average); // 3 To print the comtent og the object to the console.
+
+for (var _i2 = 0, _Object$entries = Object.entries(game.odds); _i2 < _Object$entries.length; _i2++) {
+  var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
+      team = _Object$entries$_i[0],
+      _odd = _Object$entries$_i[1];
+
+  var teamString = team === 'x' ? 'draw' : "victory ".concat(game[team]);
+  console.log("Odd of ".concat(teamString, " ").concat(_odd));
+}
+/*
+//! Looping Objects Object Keys,Values and Entries
+//? Looping over properties name
+const properties = Object.keys(restaurant.openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days`;
+
+for(const day of properties){
+  openStr += ` ${day},`;
+}
+console.log(openStr);
+// ? Old one
 // for (const day of Object.keys(openingHours)){
 //   console.log(day); 
 // }
+
 // ! Looping over properties values
+const values = Object.values(restaurant.openingHours);
+console.log(values);
 
-var values = Object.values(restaurant.openingHours);
-console.log(values); // ! Looping over entries of the object
-
-var entries = Object.entries(restaurant.openingHours);
-console.log(entries); // ? [key,values]
-
-for (var _i2 = 0, _entries = entries; _i2 < _entries.length; _i2++) {
-  var _entries$_i = _slicedToArray(_entries[_i2], 2),
-      keys = _entries$_i[0],
-      _entries$_i$ = _entries$_i[1],
-      open = _entries$_i$.open,
-      close = _entries$_i$.close;
-
-  console.log("On ".concat(keys, " we open at ").concat(open, " and close at ").concat(close));
+// ! Looping over entries of the object
+const entries = Object.entries(restaurant.openingHours);
+console.log(entries);
+// ? [key,values]
+for ( const [keys, {open,close} ] of entries){
+  console.log(`On ${keys} we open at ${open} and close at ${close}`);
 }
-/*
+
 // ! For-of-loop
 const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
 
