@@ -1,13 +1,5 @@
 'use strict';
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -54,34 +46,28 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! Codding Challenge 2
+}; // ! Sets
 
-var game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [['Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski'], ['Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze']],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5
-  }
-}; // 1 looping through array
+var orderSets = new Set(['Pasta', 'Pizza', 'Pasta', 'Pizza']); // ? Size of the set
+
+console.log(orderSets.size); // ? To check is a certain element is in the set
+
+console.log(orderSets.has('Pizza'));
+console.log(orderSets.has('Bread'));
+orderSets.add('Garlic Bread');
+orderSets.add('Garlic Bread');
+orderSets["delete"]('Pizza');
+console.log(orderSets); // ? Looping ove the sets
 
 var _iteratorNormalCompletion = true;
 var _didIteratorError = false;
 var _iteratorError = undefined;
 
 try {
-  for (var _iterator = game.scored.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-    var _step$value = _slicedToArray(_step.value, 2),
-        index = _step$value[0],
-        value = _step$value[1];
-
-    console.log("Goal ".concat(index, ": ").concat(value));
-  } // 2 Calculating the average odd
+  for (var _iterator = orderSets[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var order = _step.value;
+    console.log(order);
+  } // ? Biggest use case of sets is to remove duplicate values from the sets
 
 } catch (err) {
   _didIteratorError = true;
@@ -98,26 +84,69 @@ try {
   }
 }
 
-var odds = Object.values(game.odds);
-var average = 0;
-
-for (var _i = 0, _odds = odds; _i < _odds.length; _i++) {
-  var odd = _odds[_i];
+var staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+var stuffUnique = new Set(staff);
+console.log(stuffUnique);
+/*
+// ! Codding Challenge 2
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+// 1 looping through array
+for(const [index,value] of game.scored.entries()){
+  console.log(`Goal ${index}: ${value}`);
+}
+// 2 Calculating the average odd
+let odds = Object.values(game.odds);
+let average = 0;
+for(const odd of odds){
   average += odd;
 }
-
 average /= odds.length;
-console.log(average); // 3 To print the comtent og the object to the console.
-
-for (var _i2 = 0, _Object$entries = Object.entries(game.odds); _i2 < _Object$entries.length; _i2++) {
-  var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
-      team = _Object$entries$_i[0],
-      _odd = _Object$entries$_i[1];
-
-  var teamString = team === 'x' ? 'draw' : "victory ".concat(game[team]);
-  console.log("Odd of ".concat(teamString, " ").concat(_odd));
+console.log(average);
+// 3 To print the comtent og the object to the console.
+for( const [team,odd] of Object.entries(game.odds)){
+    const teamString = team === 'x' ? 'draw' : `victory ${game[team]}`;
+    console.log(`Odd of ${teamString} ${odd}`);
 }
-/*
+
 //! Looping Objects Object Keys,Values and Entries
 //? Looping over properties name
 const properties = Object.keys(restaurant.openingHours);

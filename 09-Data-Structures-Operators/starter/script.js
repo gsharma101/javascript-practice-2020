@@ -38,6 +38,27 @@ const restaurant = {
     },
   },
 };
+// ! Sets
+const orderSets = new Set(['Pasta', 'Pizza', 'Pasta', 'Pizza']);
+// ? Size of the set
+console.log(orderSets.size);
+// ? To check is a certain element is in the set
+console.log(orderSets.has('Pizza'));
+console.log(orderSets.has('Bread'));
+orderSets.add('Garlic Bread');
+orderSets.add('Garlic Bread');
+orderSets.delete('Pizza');
+console.log(orderSets);
+// ? Looping ove the sets
+for(const order of orderSets)
+{
+  console.log(order);
+}
+// ? Biggest use case of sets is to remove duplicate values from the sets
+const staff = ['Waiter','Chef','Waiter','Manager','Chef','Waiter'];
+const stuffUnique = new Set(staff);
+console.log(stuffUnique);
+/*
 // ! Codding Challenge 2
 const game = {
   team1: 'Bayern Munich',
@@ -96,7 +117,7 @@ for( const [team,odd] of Object.entries(game.odds)){
     const teamString = team === 'x' ? 'draw' : `victory ${game[team]}`;
     console.log(`Odd of ${teamString} ${odd}`);
 }
-/*
+
 //! Looping Objects Object Keys,Values and Entries
 //? Looping over properties name
 const properties = Object.keys(restaurant.openingHours);
