@@ -38,6 +38,35 @@ const restaurant = {
     },
   },
 };
+// ! Maps in JavaScript
+const rest = new Map();
+rest.set('name', 'Sharmas Restaurent');
+rest.set(1, 'Dalhousie, India');
+rest.set(2, 'Chamba');
+console.log(rest.set(3, 'Shimla'));
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed');
+
+  console.log(rest.get('name'));
+  console.log(rest.get(true));
+  // Example
+  const time = 21;
+  console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+  // ? Check is a map contains a certain key
+  console.log(rest.has('categories'));
+  rest.delete(2);
+  // rest.clear();
+  const arr = [1,2];
+  rest.set(arr,'Test');
+  rest.set(document.querySelector('h1'),'Heading');
+  console.log(rest);
+  console.log(rest.size);
+  console.log(rest.get(arr));
+/*
 // ! Sets
 const orderSets = new Set(['Pasta', 'Pizza', 'Pasta', 'Pizza']);
 // ? Size of the set
@@ -58,7 +87,7 @@ for(const order of orderSets)
 const staff = ['Waiter','Chef','Waiter','Manager','Chef','Waiter'];
 const stuffUnique = new Set(staff);
 console.log(stuffUnique);
-/*
+
 // ! Codding Challenge 2
 const game = {
   team1: 'Bayern Munich',
