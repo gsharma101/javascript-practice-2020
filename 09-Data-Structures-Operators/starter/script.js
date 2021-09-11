@@ -38,6 +38,40 @@ const restaurant = {
     },
   },
 };
+// ! Maps Iteration in
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2,'JAVA'],
+  [3,'JavaScript'],
+  [1,'Python'],
+  ['correct',3],
+  [true,'Correct✅'],
+  [false,'Wrong ❌'],
+]);
+console.log(question);
+
+// Converting objects ot maps
+console.log(Object.entries(restaurant.openingHours));
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap);
+// ? Iterations is possible in maps because we all know maps are also iterables
+
+// Quiz App
+console.log(question.get('question'));
+
+for(const [key,value] of question){
+    if( typeof key === 'number')
+        console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = Number(prompt("Your answer"));
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
+// Converting maps into array
+console.log([...question]);
+/*
 // ! Maps in JavaScript
 const rest = new Map();
 rest.set('name', 'Sharmas Restaurent');
@@ -66,7 +100,7 @@ rest
   console.log(rest);
   console.log(rest.size);
   console.log(rest.get(arr));
-/*
+
 // ! Sets
 const orderSets = new Set(['Pasta', 'Pizza', 'Pasta', 'Pizza']);
 // ? Size of the set

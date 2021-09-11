@@ -1,5 +1,21 @@
 'use strict';
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -46,30 +62,79 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! Maps in JavaScript
+}; // ! Maps Iteration in
 
-var rest = new Map();
+var question = new Map([['question', 'What is the best programming language in the world?'], [1, 'C'], [2, 'JAVA'], [3, 'JavaScript'], [1, 'Python'], ['correct', 3], [true, 'Correct✅'], [false, 'Wrong ❌']]);
+console.log(question); // Converting objects ot maps
+
+console.log(Object.entries(restaurant.openingHours));
+var hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap); // ? Iterations is possible in maps because we all know maps are also iterables
+// Quiz App
+
+console.log(question.get('question'));
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
+
+try {
+  for (var _iterator = question[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var _step$value = _slicedToArray(_step.value, 2),
+        key = _step$value[0],
+        value = _step$value[1];
+
+    if (typeof key === 'number') console.log("Answer ".concat(key, ": ").concat(value));
+  }
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+      _iterator["return"]();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
+}
+
+var answer = Number(prompt("Your answer"));
+console.log(answer);
+console.log(question.get(question.get('correct') === answer)); // Converting maps into array
+
+console.log(_toConsumableArray(question));
+/*
+// ! Maps in JavaScript
+const rest = new Map();
 rest.set('name', 'Sharmas Restaurent');
 rest.set(1, 'Dalhousie, India');
 rest.set(2, 'Chamba');
 console.log(rest.set(3, 'Shimla'));
-rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']).set('open', 11).set('close', 23).set(true, 'We are open :D').set(false, 'We are closed');
-console.log(rest.get('name'));
-console.log(rest.get(true)); // Example
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are closed');
 
-var time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // ? Check is a map contains a certain key
+  console.log(rest.get('name'));
+  console.log(rest.get(true));
+  // Example
+  const time = 21;
+  console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+  // ? Check is a map contains a certain key
+  console.log(rest.has('categories'));
+  rest.delete(2);
+  // rest.clear();
+  const arr = [1,2];
+  rest.set(arr,'Test');
+  rest.set(document.querySelector('h1'),'Heading');
+  console.log(rest);
+  console.log(rest.size);
+  console.log(rest.get(arr));
 
-console.log(rest.has('categories'));
-rest["delete"](2); // rest.clear();
-
-var arr = [1, 2];
-rest.set(arr, 'Test');
-rest.set(document.querySelector('h1'), 'Heading');
-console.log(rest);
-console.log(rest.size);
-console.log(rest.get(arr));
-/*
 // ! Sets
 const orderSets = new Set(['Pasta', 'Pizza', 'Pasta', 'Pizza']);
 // ? Size of the set
