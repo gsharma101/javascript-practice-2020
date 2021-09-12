@@ -54,32 +54,30 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! Working with string Part-3
-// ? Split and Join
+}; // ! Coding Challenge 4
 
-console.log('a+very+nice+string'.split('+'));
-console.log('Gaurav Sharma'.split(' '));
-
-var _JonasSchmedtmann$sp = 'Jonas Schmedtmann'.split(' '),
-    _JonasSchmedtmann$sp2 = _slicedToArray(_JonasSchmedtmann$sp, 2),
-    firstName = _JonasSchmedtmann$sp2[0],
-    lastName = _JonasSchmedtmann$sp2[1];
-
-var newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName); //? function to Capatalizing the first letter of the string
-
-var capitalizeName = function capitalizeName(name) {
-  var names = name.split(' ');
-  var namesUpper = [];
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+document.querySelector('button').addEventListener('click', function () {
+  var text = document.querySelector('textarea').value;
+  var rows = text.split('\n');
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
 
   try {
-    for (var _iterator = names[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var n = _step.value;
-      // namesUpper.push(n[0].toUpperCase() + n.slice(1));
-      namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+    for (var _iterator = rows.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _step$value = _slicedToArray(_step.value, 2),
+          i = _step$value[0],
+          names = _step$value[1];
+
+      var _names$toLowerCase$tr = names.toLowerCase().trim().split('_'),
+          _names$toLowerCase$tr2 = _slicedToArray(_names$toLowerCase$tr, 2),
+          first = _names$toLowerCase$tr2[0],
+          second = _names$toLowerCase$tr2[1];
+
+      var output = "".concat(first).concat(second.replace(second[0], second[0].toUpperCase()));
+      console.log("".concat(output.padEnd(20)).concat('✅'.repeat(i + 1)));
     }
   } catch (err) {
     _didIteratorError = true;
@@ -95,36 +93,55 @@ var capitalizeName = function capitalizeName(name) {
       }
     }
   }
+});
+/*
+// ! Working with string Part-3
+// ? Split and Join
+console.log('a+very+nice+string'.split('+'));
+console.log('Gaurav Sharma'.split(' '));
 
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+const newName = ['Mr.',firstName, lastName. toUpperCase()].join(' ');
+console.log(newName);
+
+//? function to Capatalizing the first letter of the string
+const capitalizeName = function(name){
+  const names = name.split(' ');
+  const namesUpper = [];
+  for(const n of names){
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0],n[0].toUpperCase()));
+  }
   console.log(namesUpper.join(' '));
 };
 
 capitalizeName('jessica and smith davis');
-capitalizeName('Gaurav Sharma'); // ? Padding a string in JavaScript
+capitalizeName('Gaurav Sharma');
 
-var message = 'Go to gate 23';
-console.log(message.padStart(20, '+').padEnd(30, '+'));
-console.log('Gaurav'.padStart(20, '+').padEnd(30, '+')); // ? Real example of padding 
+// ? Padding a string in JavaScript
+const message = 'Go to gate 23';
+console.log(message.padStart(20,'+').padEnd(30,'+'));
+console.log('Gaurav'.padStart(20,'+').padEnd(30,'+'));
 
-var maskCreditCard = function maskCreditCard(number) {
-  var str = number + '';
-  var last = str.slice(-4);
-  return last.padStart(str.length, '*');
-};
+// ? Real example of padding 
+const maskCreditCard = function(number){
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length,'*');
+}
 
 console.log(maskCreditCard(4536765476572537));
-console.log(maskCreditCard('83764283746283')); //? Repaeat
+console.log(maskCreditCard('83764283746283'));
+//? Repaeat
+const message2 = 'Bad weather... All Departures Delayed...';
+console.log(message2.repeat(5)); 
 
-var message2 = 'Bad weather... All Departures Delayed...';
-console.log(message2.repeat(5));
-
-var planes = function planes(n) {
-  console.log("There are ".concat(n, " planes in the line ").concat('✈️'.repeat(n)));
-};
-
+const planes = function(n){
+  console.log(`There are ${n} planes in the line ${'✈️'.repeat(n)}`);
+}
 planes(5);
 planes(6);
-/*
+
 // ! Working with string Part-2
 const airline = 'TAP Air Portugal';
 console.log(airline.toLowerCase());
