@@ -38,6 +38,53 @@ const restaurant = {
     },
   },
 };
+// ! Working with string Part-3
+// ? Split and Join
+console.log('a+very+nice+string'.split('+'));
+console.log('Gaurav Sharma'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+const newName = ['Mr.',firstName, lastName. toUpperCase()].join(' ');
+console.log(newName);
+
+//? function to Capatalizing the first letter of the string
+const capitalizeName = function(name){
+  const names = name.split(' ');
+  const namesUpper = [];
+  for(const n of names){
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0],n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica and smith davis');
+capitalizeName('Gaurav Sharma');
+
+// ? Padding a string in JavaScript
+const message = 'Go to gate 23';
+console.log(message.padStart(20,'+').padEnd(30,'+'));
+console.log('Gaurav'.padStart(20,'+').padEnd(30,'+'));
+
+// ? Real example of padding 
+const maskCreditCard = function(number){
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length,'*');
+}
+
+console.log(maskCreditCard(4536765476572537));
+console.log(maskCreditCard('83764283746283'));
+//? Repaeat
+const message2 = 'Bad weather... All Departures Delayed...';
+console.log(message2.repeat(5)); 
+
+const planes = function(n){
+  console.log(`There are ${n} planes in the line ${'✈️'.repeat(n)}`);
+}
+planes(5);
+planes(6);
+/*
 // ! Working with string Part-2
 const airline = 'TAP Air Portugal';
 console.log(airline.toLowerCase());
@@ -88,7 +135,7 @@ const checkBaggage = function(item){
 checkBaggage('I have a laptop, some food and a pocket Knife');
 checkBaggage('Socks and camera');
 checkBaggage('Got some snacks anda gun for protection');
-/*
+
 // ! Working with string Part-1
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
