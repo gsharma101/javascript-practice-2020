@@ -38,6 +38,23 @@ const restaurant = {
     },
   },
 };
+// ! Coding Challenge 4
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+
+document.querySelector('button').addEventListener('click',function(){
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+
+  for(const [i,names] of rows.entries()){
+  const [first,second] = names.toLowerCase().trim().split('_');
+  const output = `${first}${second.replace(second[0],second[0].toUpperCase())}`;
+  console.log(`${output.padEnd(20)}${'✅'.repeat(i+1)}`);
+  }
+
+});
+/*
 // ! Working with string Part-3
 // ? Split and Join
 console.log('a+very+nice+string'.split('+'));
@@ -84,7 +101,7 @@ const planes = function(n){
 }
 planes(5);
 planes(6);
-/*
+
 // ! Working with string Part-2
 const airline = 'TAP Air Portugal';
 console.log(airline.toLowerCase());
