@@ -38,6 +38,44 @@ const restaurant = {
     },
   },
 };
+/*
+// ! Working with string Part-1
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+console.log(airline.length);
+console.log('B737'.length);
+// ? Methods in array
+console.log(airline.indexOf('r'));
+console.log(airline.slice(4));
+console.log(airline.slice(4,7));
+console.log(airline.slice(0,airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+console.log(airline.slice(-5));
+console.log(airline.slice(1,-1));
+// ? Practice
+const checkMiddleSeat = function(seat){
+  // B and E are middle sets
+  const s = seat.slice(-1);
+  if(s == 'B' || s == 'E'){
+    console.log('You got the middle seat');
+  } else
+  {
+    console.log('You got lucky');
+  }
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3B');
+// ? Boxing in JavaScript 
+console.log(new String('jonas'));
+console.log(typeof new String('jonas'));
+console.log(typeof new String('jonas').slice(1));
+
 // !Coding Challenge 3
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
@@ -66,7 +104,7 @@ for(const [min, event] of gameEvents){
   const half = min <= 45 ? 'FIRST' : 'SECOND';
   console.log(`[${half} HALF] ${min}: ${event}`);
 }
-/*
+
 // ! Maps Iteration in
 const question = new Map([
   ['question', 'What is the best programming language in the world?'],
