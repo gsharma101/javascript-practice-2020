@@ -1,5 +1,13 @@
 'use strict';
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -46,59 +54,128 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! Working with string Part-2
+}; // ! Working with string Part-3
+// ? Split and Join
 
-var airline = 'TAP Air Portugal';
+console.log('a+very+nice+string'.split('+'));
+console.log('Gaurav Sharma'.split(' '));
+
+var _JonasSchmedtmann$sp = 'Jonas Schmedtmann'.split(' '),
+    _JonasSchmedtmann$sp2 = _slicedToArray(_JonasSchmedtmann$sp, 2),
+    firstName = _JonasSchmedtmann$sp2[0],
+    lastName = _JonasSchmedtmann$sp2[1];
+
+var newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName); //? function to Capatalizing the first letter of the string
+
+var capitalizeName = function capitalizeName(name) {
+  var names = name.split(' ');
+  var namesUpper = [];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = names[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var n = _step.value;
+      // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+      namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica and smith davis');
+capitalizeName('Gaurav Sharma'); // ? Padding a string in JavaScript
+
+var message = 'Go to gate 23';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+console.log('Gaurav'.padStart(20, '+').padEnd(30, '+')); // ? Real example of padding 
+
+var maskCreditCard = function maskCreditCard(number) {
+  var str = number + '';
+  var last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(4536765476572537));
+console.log(maskCreditCard('83764283746283')); //? Repaeat
+
+var message2 = 'Bad weather... All Departures Delayed...';
+console.log(message2.repeat(5));
+
+var planes = function planes(n) {
+  console.log("There are ".concat(n, " planes in the line ").concat('✈️'.repeat(n)));
+};
+
+planes(5);
+planes(6);
+/*
+// ! Working with string Part-2
+const airline = 'TAP Air Portugal';
 console.log(airline.toLowerCase());
-console.log(airline.toUpperCase()); // Fix capitalization in name
+console.log(airline.toUpperCase());
+// Fix capitalization in name
+const passenger = 'jOnAS'; //Jonas
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+// Comparing emails
+const email = 'hello@jonas.io';
+const loginEmail = ' Hello@gaurav.Io \n';
 
-var passenger = 'jOnAS'; //Jonas
-
-var passengerLower = passenger.toLowerCase();
-var passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
-console.log(passengerCorrect); // Comparing emails
-
-var email = 'hello@jonas.io';
-var loginEmail = ' Hello@gaurav.Io \n';
-var lowerEmail = loginEmail.toLowerCase();
-var trimedEmail = lowerEmail.trim();
+const lowerEmail = loginEmail.toLowerCase();
+const trimedEmail = lowerEmail.trim();
 console.log(trimedEmail);
-var normalizedEmail = loginEmail.toLowerCase().trim();
+const normalizedEmail = loginEmail.toLowerCase().trim();
 console.log(normalizedEmail);
-console.log(email === normalizedEmail); // ?replacing strings
 
-var priceGB = '288,97£';
-var priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(email === normalizedEmail);
+// ?replacing strings
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£','$').replace(',','.');
 console.log(priceUS);
-var announcement = 'All passengers come to barding door 23. Boarding door 23'; // console.log(announcement.replaceAll('door','gate'));
+const announcement = 'All passengers come to barding door 23. Boarding door 23';
+// console.log(announcement.replaceAll('door','gate'));
 // ? Regular expression
-
-console.log(announcement.replaceAll(/door/g, 'gate')); // ?Boolean Methods 
-
-var plane = 'Airbus A320neo';
+console.log(announcement.replaceAll(/door/g,'gate'));
+// ?Boolean Methods 
+const plane = 'Airbus A320neo';
 console.log(plane.includes('A320'));
 console.log(plane.includes('Boing'));
 console.log(plane.startsWith('AIR'));
 
-if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+if(plane.startsWith('Airbus') && plane.endsWith('neo'))
+{
   console.log('Part of the NEW Airbus family');
-} // ? Practice exercise
-
-
-var checkBaggage = function checkBaggage(item) {
-  var baggage = item.toLowerCase();
-
-  if (baggage.includes('knife') || baggage.includes('gun')) {
+}
+// ? Practice exercise
+const checkBaggage = function(item){
+  const baggage = item.toLowerCase();
+  if(baggage.includes('knife') || baggage.includes('gun')){
     console.log('You are NOT allowed on board❌');
-  } else {
+  } else{
     console.log('Welcome aboard✔️');
   }
-};
-
+}
 checkBaggage('I have a laptop, some food and a pocket Knife');
 checkBaggage('Socks and camera');
 checkBaggage('Got some snacks anda gun for protection');
-/*
+
 // ! Working with string Part-1
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
