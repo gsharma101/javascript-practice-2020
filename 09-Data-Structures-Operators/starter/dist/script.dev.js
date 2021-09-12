@@ -1,5 +1,21 @@
 'use strict';
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -46,416 +62,499 @@ var restaurant = {
       close: 24
     }
   }
-}; // ! Maps in JavaScript
+}; // !Coding Challenge 3
 
-var rest = new Map();
-rest.set('name', 'Sharmas Restaurent');
-rest.set(1, 'Dalhousie, India');
-rest.set(2, 'Chamba');
-console.log(rest.set(3, 'Shimla'));
-rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']).set('open', 11).set('close', 23).set(true, 'We are open :D').set(false, 'We are closed');
-console.log(rest.get('name'));
-console.log(rest.get(true)); // Example
+var gameEvents = new Map([[17, '⚽️ GOAL'], [36, '🔁 Substitution'], [47, '⚽️ GOAL'], [61, '🔁 Substitution'], [64, '🔶 Yellow card'], [69, '🔴 Red card'], [70, '🔁 Substitution'], [72, '🔁 Substitution'], [76, '⚽️ GOAL'], [80, '⚽️ GOAL'], [92, '🔶 Yellow card']]); // 1 
 
-var time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // ? Check is a map contains a certain key
+var events = _toConsumableArray(new Set(gameEvents.values()));
 
-console.log(rest.has('categories'));
-rest["delete"](2); // rest.clear();
+console.log(events); // 2
 
-var arr = [1, 2];
-rest.set(arr, 'Test');
-rest.set(document.querySelector('h1'), 'Heading');
-console.log(rest);
-console.log(rest.size);
-console.log(rest.get(arr));
-/*
-// ! Sets
-const orderSets = new Set(['Pasta', 'Pizza', 'Pasta', 'Pizza']);
-// ? Size of the set
-console.log(orderSets.size);
-// ? To check is a certain element is in the set
-console.log(orderSets.has('Pizza'));
-console.log(orderSets.has('Bread'));
-orderSets.add('Garlic Bread');
-orderSets.add('Garlic Bread');
-orderSets.delete('Pizza');
-console.log(orderSets);
-// ? Looping ove the sets
-for(const order of orderSets)
-{
-  console.log(order);
-}
-// ? Biggest use case of sets is to remove duplicate values from the sets
-const staff = ['Waiter','Chef','Waiter','Manager','Chef','Waiter'];
-const stuffUnique = new Set(staff);
-console.log(stuffUnique);
+gameEvents["delete"](64); // 3
 
-// ! Codding Challenge 2
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
-// 1 looping through array
-for(const [index,value] of game.scored.entries()){
-  console.log(`Goal ${index}: ${value}`);
-}
-// 2 Calculating the average odd
-let odds = Object.values(game.odds);
-let average = 0;
-for(const odd of odds){
-  average += odd;
-}
-average /= odds.length;
-console.log(average);
-// 3 To print the comtent og the object to the console.
-for( const [team,odd] of Object.entries(game.odds)){
-    const teamString = team === 'x' ? 'draw' : `victory ${game[team]}`;
-    console.log(`Odd of ${teamString} ${odd}`);
-}
+var time = _toConsumableArray(gameEvents.keys()).pop();
 
-//! Looping Objects Object Keys,Values and Entries
-//? Looping over properties name
-const properties = Object.keys(restaurant.openingHours);
-console.log(properties);
+console.log(time);
+console.log("An event happened, on average, every ".concat(time / gameEvents.size, " minutes")); // 4
 
-let openStr = `We are open on ${properties.length} days`;
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
 
-for(const day of properties){
-  openStr += ` ${day},`;
-}
-console.log(openStr);
-// ? Old one
-// for (const day of Object.keys(openingHours)){
-//   console.log(day); 
-// }
+try {
+  for (var _iterator = gameEvents[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var _step$value = _slicedToArray(_step.value, 2),
+        min = _step$value[0],
+        event = _step$value[1];
 
-// ! Looping over properties values
-const values = Object.values(restaurant.openingHours);
-console.log(values);
-
-// ! Looping over entries of the object
-const entries = Object.entries(restaurant.openingHours);
-console.log(entries);
-// ? [key,values]
-for ( const [keys, {open,close} ] of entries){
-  console.log(`On ${keys} we open at ${open} and close at ${close}`);
-}
-
-// ! For-of-loop
-const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
-
-for (const item of menu) {
-  console.log(item);
-}
-//? Old way
-for (const item of menu.entries()){
-  console.log(`${item[0] + 1}: ${item[1]}`);
-}
-// ? Using destructuring
-console.log('XXXXXXXXXX Uing Destructuring XXXXXXXXXXX');
-for (const [i,el] of menu.entries()){
-  console.log(`${i + 1}: ${el}`);
-}
-
-// ! First Coding Challenge
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
-// ? Challenge starts
-// 1
-const [players1, players2] = game.players;
-console.log(players1, players2);
-// 2
-const [gk, ...fieldPLayers] = players1;
-console.log(gk, fieldPLayers);
-// 3
-const allPlayers = [...players1, ...players2];
-// 4
-const players1Final = [players1, 'Thiaho', 'Coutinho', 'Periscic'];
-// 5 Nested destructuring of odds property
-const {
-  odds: { team1, X: draw, team2 },
-} = game;
-console.log(team2,draw,team2);
-// 6
-const printGoals = function(...players){
-  console.log(`${players.length} goals were scored`);
-}
-
-printGoals('Devies','Miller','Lewandowski','kimmich');
-printGoals('Devies','Miller');
-printGoals(...game.score);
-
-// 7
-team1 < team2 && console.log(`Team 1 is more likeely to win`);
-team1 > team2 && console.log(`Team 2 is more likeely to win`);
-
-// !Nullish coalesing operator
-restaurant.numGuests = 0;
-const guests = restaurant.numGuests || 10;
-console.log(guests);
-// Nullish: null and undefined (Not 0 or '')
-const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect); 
-
-console.log('----------OR------------');
-// ! Use ANY data type, return ANY data type, short-circuiting
-// ? Short circuiting using || operator
-console.log(3 || 'Gaurav');
-console.log('' || 'Jonas');
-console.log(true || 0);
-console.log(undefined || null);
-
-console.log(undefined || 0 ||''||'Hello'||23||null);
-restaurant.numGuests = 23;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
-
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2);
-console.log('----------AND-----------');
-console.log(0 && 'Jonas');
-console.log(7 && 'Jonas');
-console.log('Hello'&& 23 && null && 'jonas');
-// Practical example
-if(restaurant.orderPizza){
-  restaurant.orderPizza('mushroooms','spinach');
-}
-// above example with 
-restaurant.orderPizza && restaurant.orderPizza('mushrooms','spinach');
-
-// !Rest Pattern Destructuring
-// ? This is SPREAD, because it is in the RIGHT side of the =
-const arr = [1,2,...[3,4]];
-// ? This is REST, because it is in the LEFT side of the =
-const [a,b,...others] = [1,2,3,4,5];
-console.log(a,b,others);
-
-const [pizza, ,risotto,...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(pizza,risotto,otherFood);
-
-//Objects
-const {sat, ...weekdays} = restaurant.openingHours;
-console.log(weekdays);
-
-// ? Functions
-const add = function(...numbers){
-  let sum = 0;
-  for(let i = 0; i<numbers.length; i++)
-  {
-    sum += numbers[i];
+    var half = min <= 45 ? 'FIRST' : 'SECOND';
+    console.log("[".concat(half, " HALF] ").concat(min, ": ").concat(event));
   }
-  console.log(sum);
-};
-// Any arbitary amount of arguments should work for this function
-add(2,3);
-add(5,3,7,2);
-// Another example
-const x = [23,5,7];
-add(...x);
+  /*
+  // ! Maps Iteration in
+  const question = new Map([
+    ['question', 'What is the best programming language in the world?'],
+    [1, 'C'],
+    [2,'JAVA'],
+    [3,'JavaScript'],
+    [1,'Python'],
+    ['correct',3],
+    [true,'Correct✅'],
+    [false,'Wrong ❌'],
+  ]);
+  console.log(question);
+  
+  // Converting objects ot maps
+  console.log(Object.entries(restaurant.openingHours));
+  const hoursMap = new Map(Object.entries(restaurant.openingHours));
+  console.log(hoursMap);
+  // ? Iterations is possible in maps because we all know maps are also iterables
+  
+  // Quiz App
+  console.log(question.get('question'));
+  
+  for(const [key,value] of question){
+      if( typeof key === 'number')
+          console.log(`Answer ${key}: ${value}`);
+  }
+  
+  const answer = Number(prompt("Your answer"));
+  console.log(answer);
+  
+  console.log(question.get(question.get('correct') === answer));
+  // Converting maps into array
+  console.log([...question]);
+  
+  // ! Maps in JavaScript
+  const rest = new Map();
+  rest.set('name', 'Sharmas Restaurent');
+  rest.set(1, 'Dalhousie, India');
+  rest.set(2, 'Chamba');
+  console.log(rest.set(3, 'Shimla'));
+  rest
+    .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+    .set('open', 11)
+    .set('close', 23)
+    .set(true, 'We are open :D')
+    .set(false, 'We are closed');
+  
+    console.log(rest.get('name'));
+    console.log(rest.get(true));
+    // Example
+    const time = 21;
+    console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+    // ? Check is a map contains a certain key
+    console.log(rest.has('categories'));
+    rest.delete(2);
+    // rest.clear();
+    const arr = [1,2];
+    rest.set(arr,'Test');
+    rest.set(document.querySelector('h1'),'Heading');
+    console.log(rest);
+    console.log(rest.size);
+    console.log(rest.get(arr));
+  
+  // ! Sets
+  const orderSets = new Set(['Pasta', 'Pizza', 'Pasta', 'Pizza']);
+  // ? Size of the set
+  console.log(orderSets.size);
+  // ? To check is a certain element is in the set
+  console.log(orderSets.has('Pizza'));
+  console.log(orderSets.has('Bread'));
+  orderSets.add('Garlic Bread');
+  orderSets.add('Garlic Bread');
+  orderSets.delete('Pizza');
+  console.log(orderSets);
+  // ? Looping ove the sets
+  for(const order of orderSets)
+  {
+    console.log(order);
+  }
+  // ? Biggest use case of sets is to remove duplicate values from the sets
+  const staff = ['Waiter','Chef','Waiter','Manager','Chef','Waiter'];
+  const stuffUnique = new Set(staff);
+  console.log(stuffUnique);
+  
+  // ! Codding Challenge 2
+  const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+      [
+        'Neuer',
+        'Pavard',
+        'Martinez',
+        'Alaba',
+        'Davies',
+        'Kimmich',
+        'Goretzka',
+        'Coman',
+        'Muller',
+        'Gnarby',
+        'Lewandowski',
+      ],
+      [
+        'Burki',
+        'Schulz',
+        'Hummels',
+        'Akanji',
+        'Hakimi',
+        'Weigl',
+        'Witsel',
+        'Hazard',
+        'Brandt',
+        'Sancho',
+        'Gotze',
+      ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+      team1: 1.33,
+      x: 3.25,
+      team2: 6.5,
+    },
+  };
+  // 1 looping through array
+  for(const [index,value] of game.scored.entries()){
+    console.log(`Goal ${index}: ${value}`);
+  }
+  // 2 Calculating the average odd
+  let odds = Object.values(game.odds);
+  let average = 0;
+  for(const odd of odds){
+    average += odd;
+  }
+  average /= odds.length;
+  console.log(average);
+  // 3 To print the comtent og the object to the console.
+  for( const [team,odd] of Object.entries(game.odds)){
+      const teamString = team === 'x' ? 'draw' : `victory ${game[team]}`;
+      console.log(`Odd of ${teamString} ${odd}`);
+  }
+  
+  //! Looping Objects Object Keys,Values and Entries
+  //? Looping over properties name
+  const properties = Object.keys(restaurant.openingHours);
+  console.log(properties);
+  
+  let openStr = `We are open on ${properties.length} days`;
+  
+  for(const day of properties){
+    openStr += ` ${day},`;
+  }
+  console.log(openStr);
+  // ? Old one
+  // for (const day of Object.keys(openingHours)){
+  //   console.log(day); 
+  // }
+  
+  // ! Looping over properties values
+  const values = Object.values(restaurant.openingHours);
+  console.log(values);
+  
+  // ! Looping over entries of the object
+  const entries = Object.entries(restaurant.openingHours);
+  console.log(entries);
+  // ? [key,values]
+  for ( const [keys, {open,close} ] of entries){
+    console.log(`On ${keys} we open at ${open} and close at ${close}`);
+  }
+  
+  // ! For-of-loop
+  const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
+  
+  for (const item of menu) {
+    console.log(item);
+  }
+  //? Old way
+  for (const item of menu.entries()){
+    console.log(`${item[0] + 1}: ${item[1]}`);
+  }
+  // ? Using destructuring
+  console.log('XXXXXXXXXX Uing Destructuring XXXXXXXXXXX');
+  for (const [i,el] of menu.entries()){
+    console.log(`${i + 1}: ${el}`);
+  }
+  
+  // ! First Coding Challenge
+  const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+      [
+        'Neuer',
+        'Pavard',
+        'Martinez',
+        'Alaba',
+        'Davies',
+        'Kimmich',
+        'Goretzka',
+        'Coman',
+        'Muller',
+        'Gnarby',
+        'Lewandowski',
+      ],
+      [
+        'Burki',
+        'Schulz',
+        'Hummels',
+        'Akanji',
+        'Hakimi',
+        'Weigl',
+        'Witsel',
+        'Hazard',
+        'Brandt',
+        'Sancho',
+        'Gotze',
+      ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+      team1: 1.33,
+      x: 3.25,
+      team2: 6.5,
+    },
+  };
+  // ? Challenge starts
+  // 1
+  const [players1, players2] = game.players;
+  console.log(players1, players2);
+  // 2
+  const [gk, ...fieldPLayers] = players1;
+  console.log(gk, fieldPLayers);
+  // 3
+  const allPlayers = [...players1, ...players2];
+  // 4
+  const players1Final = [players1, 'Thiaho', 'Coutinho', 'Periscic'];
+  // 5 Nested destructuring of odds property
+  const {
+    odds: { team1, X: draw, team2 },
+  } = game;
+  console.log(team2,draw,team2);
+  // 6
+  const printGoals = function(...players){
+    console.log(`${players.length} goals were scored`);
+  }
+  
+  printGoals('Devies','Miller','Lewandowski','kimmich');
+  printGoals('Devies','Miller');
+  printGoals(...game.score);
+  
+  // 7
+  team1 < team2 && console.log(`Team 1 is more likeely to win`);
+  team1 > team2 && console.log(`Team 2 is more likeely to win`);
+  
+  // !Nullish coalesing operator
+  restaurant.numGuests = 0;
+  const guests = restaurant.numGuests || 10;
+  console.log(guests);
+  // Nullish: null and undefined (Not 0 or '')
+  const guestCorrect = restaurant.numGuests ?? 10;
+  console.log(guestCorrect); 
+  
+  console.log('----------OR------------');
+  // ! Use ANY data type, return ANY data type, short-circuiting
+  // ? Short circuiting using || operator
+  console.log(3 || 'Gaurav');
+  console.log('' || 'Jonas');
+  console.log(true || 0);
+  console.log(undefined || null);
+  
+  console.log(undefined || 0 ||''||'Hello'||23||null);
+  restaurant.numGuests = 23;
+  const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+  console.log(guests1);
+  
+  const guests2 = restaurant.numGuests || 10;
+  console.log(guests2);
+  console.log('----------AND-----------');
+  console.log(0 && 'Jonas');
+  console.log(7 && 'Jonas');
+  console.log('Hello'&& 23 && null && 'jonas');
+  // Practical example
+  if(restaurant.orderPizza){
+    restaurant.orderPizza('mushroooms','spinach');
+  }
+  // above example with 
+  restaurant.orderPizza && restaurant.orderPizza('mushrooms','spinach');
+  
+  // !Rest Pattern Destructuring
+  // ? This is SPREAD, because it is in the RIGHT side of the =
+  const arr = [1,2,...[3,4]];
+  // ? This is REST, because it is in the LEFT side of the =
+  const [a,b,...others] = [1,2,3,4,5];
+  console.log(a,b,others);
+  
+  const [pizza, ,risotto,...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+  console.log(pizza,risotto,otherFood);
+  
+  //Objects
+  const {sat, ...weekdays} = restaurant.openingHours;
+  console.log(weekdays);
+  
+  // ? Functions
+  const add = function(...numbers){
+    let sum = 0;
+    for(let i = 0; i<numbers.length; i++)
+    {
+      sum += numbers[i];
+    }
+    console.log(sum);
+  };
+  // Any arbitary amount of arguments should work for this function
+  add(2,3);
+  add(5,3,7,2);
+  // Another example
+  const x = [23,5,7];
+  add(...x);
+  
+  restaurant.orderPizza('mashroom','onion','olives','spinach');
+  restaurant.orderPizza('mushroom');
+  
+  // ! Spread Operator
+  const arr = [7, 8, 9];
+  const badNewArr = [1, 2, arr[1], arr[2]];
+  console.log(badNewArr);
+  // ? Using spread operator
+  const newArr = [1, 2, ...arr];
+  console.log(newArr);
+  
+  const newMenu = [...restaurant.mainMenu, 'Gnocci']; //Completely a new array
+  console.log(newMenu);
+  
+  // Coppy of array
+  const mainMenuCoppy = [...restaurant.mainMenu];
+  // Joining 2 arrays
+  const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+  console.log(menu);
+  // Iterables:
+  const str = 'Jonas';
+  const letters = [...str, ' ', 'S.'];
+  console.log(letters);
+  
+  const ingridients = [
+    // prompt("Let's make pasta! Ingredient 1?"),
+    // prompt("Let's make pasta! Ingredient 2?"),
+    // prompt("Let's make pasta! Ingredient 3?"),
+  ];
+  console.log(ingridients);
+  // Order pasta function
+  // restaurant.orderPasta(ingridients[0],ingridients[1],ingridients[3]); old way 
+  restaurant.orderPasta(...ingridients);
+  // using spread operator with objects
+  const newRestaurant = {foundingYear:1998,...restaurant, founder:'Gaurav Sharma'};
+  
+  console.log(newRestaurant);
+  // Copy of object
+  const restaurentCopy = {...restaurant};
+  restaurentCopy.name = "Sharmas Restaurent";
+  console.log(restaurentCopy);
+  
+  // !Destructuring of objects begins
+  restaurant.orderDelivery({
+    time: '22:30',
+    address: 'Via del Sole, 21',
+    mainIndex: 2,
+    starterIndex: 2,
+  });
+  
+  restaurant.orderDelivery({
+    address: 'Via del Sole, 21',
+    starterIndex: 1,
+  });
+  
+  const { name, openingHours, categories } = restaurant;
+  console.log(name, openingHours, categories);
+  
+  const {
+    name: restaurantName,
+    openingHours: hours,
+    categories: tags,
+  } = restaurant;
+  console.log(restaurantName, hours, tags);
+  
+  // Default values
+  const { menu = [], starterMenu: starters = [] } = restaurant;
+  console.log(menu, starters);
+  
+  // Mutating variables
+  let a = 111;
+  let b = 999;
+  const obj = { a: 23, b: 7, c: 14 };
+  ({ a, b } = obj);
+  console.log(a, b);
+  
+  // Nested objects
+  const {
+    fri: { open: o, close: c },
+  } = openingHours;
+  console.log(o, c);
+  
+  //! Destructuring of array
+  
+  const arr = [2, 3, 4];
+  const a = arr[0];
+  const b = arr[1];
+  const c = arr[2];
+  
+  //! Dstructuring of array above example can be written as
+  const [x, y, z] = arr;
+  console.log(x, y, z);
+  
+  //!getting elements from restaurant categories
+  // const [first, second] = restaurant.categories;
+  // console.log(first, second);
+  //!changing secondary and main item in categories
+  
+  // skipped pizzeria from the categories
+  let [main, , secondary] = restaurant.categories;
+  console.log(main, secondary);
+  
+  //!switching varibales without destructuring 
+  //? First Method
+  
+  // const temp = main;
+  // main = secondary;
+  // secondary = temp;
+  // console.log(main, secondary);
+  
+  //? Second Mathod
+  
+  [main, secondary] = [secondary, main];
+  console.log(main, secondary);
+  // console.log(restaurant.order(2,0));
+  
+  // Receiving 2 return value from a function
+  const [starter, mainCourse] = restaurant.order(2,0);
+  console.log(starter,mainCourse);
+  const nested = [2,4,[5,6]];
+  
+  // const [i,,j] = nested;
+  // console.log(i,j);
+  // ! Doing destructuring inside of desecturing
+  const [i,,[j,k]] = nested;
+  console.log(i,j,k); // this gives ous seperate variables
+  
+  //! setting default values of varibles when we are setting them
+  const [p=1,q=1,r=1] = [8,9];
+  console.log(p,q,r);
+  */
 
-restaurant.orderPizza('mashroom','onion','olives','spinach');
-restaurant.orderPizza('mushroom');
-
-// ! Spread Operator
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[1], arr[2]];
-console.log(badNewArr);
-// ? Using spread operator
-const newArr = [1, 2, ...arr];
-console.log(newArr);
-
-const newMenu = [...restaurant.mainMenu, 'Gnocci']; //Completely a new array
-console.log(newMenu);
-
-// Coppy of array
-const mainMenuCoppy = [...restaurant.mainMenu];
-// Joining 2 arrays
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menu);
-// Iterables:
-const str = 'Jonas';
-const letters = [...str, ' ', 'S.'];
-console.log(letters);
-
-const ingridients = [
-  // prompt("Let's make pasta! Ingredient 1?"),
-  // prompt("Let's make pasta! Ingredient 2?"),
-  // prompt("Let's make pasta! Ingredient 3?"),
-];
-console.log(ingridients);
-// Order pasta function
-// restaurant.orderPasta(ingridients[0],ingridients[1],ingridients[3]); old way 
-restaurant.orderPasta(...ingridients);
-// using spread operator with objects
-const newRestaurant = {foundingYear:1998,...restaurant, founder:'Gaurav Sharma'};
-
-console.log(newRestaurant);
-// Copy of object
-const restaurentCopy = {...restaurant};
-restaurentCopy.name = "Sharmas Restaurent";
-console.log(restaurentCopy);
-
-// !Destructuring of objects begins
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via del Sole, 21',
-  mainIndex: 2,
-  starterIndex: 2,
-});
-
-restaurant.orderDelivery({
-  address: 'Via del Sole, 21',
-  starterIndex: 1,
-});
-
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
-
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
-
-// Default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
-
-// Mutating variables
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
-({ a, b } = obj);
-console.log(a, b);
-
-// Nested objects
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
-
-//! Destructuring of array
-
-const arr = [2, 3, 4];
-const a = arr[0];
-const b = arr[1];
-const c = arr[2];
-
-//! Dstructuring of array above example can be written as
-const [x, y, z] = arr;
-console.log(x, y, z);
-
-//!getting elements from restaurant categories
-// const [first, second] = restaurant.categories;
-// console.log(first, second);
-//!changing secondary and main item in categories
-
-// skipped pizzeria from the categories
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
-
-//!switching varibales without destructuring 
-//? First Method
-
-// const temp = main;
-// main = secondary;
-// secondary = temp;
-// console.log(main, secondary);
-
-//? Second Mathod
-
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
-// console.log(restaurant.order(2,0));
-
-// Receiving 2 return value from a function
-const [starter, mainCourse] = restaurant.order(2,0);
-console.log(starter,mainCourse);
-const nested = [2,4,[5,6]];
-
-// const [i,,j] = nested;
-// console.log(i,j);
-// ! Doing destructuring inside of desecturing
-const [i,,[j,k]] = nested;
-console.log(i,j,k); // this gives ous seperate variables
-
-//! setting default values of varibles when we are setting them
-const [p=1,q=1,r=1] = [8,9];
-console.log(p,q,r);
-*/
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+      _iterator["return"]();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
+}
