@@ -46,7 +46,58 @@ var restaurant = {
       close: 24
     }
   }
+}; // ! Working with string Part-2
+
+var airline = 'TAP Air Portugal';
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase()); // Fix capitalization in name
+
+var passenger = 'jOnAS'; //Jonas
+
+var passengerLower = passenger.toLowerCase();
+var passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect); // Comparing emails
+
+var email = 'hello@jonas.io';
+var loginEmail = ' Hello@gaurav.Io \n';
+var lowerEmail = loginEmail.toLowerCase();
+var trimedEmail = lowerEmail.trim();
+console.log(trimedEmail);
+var normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail); // ?replacing strings
+
+var priceGB = '288,97£';
+var priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+var announcement = 'All passengers come to barding door 23. Boarding door 23'; // console.log(announcement.replaceAll('door','gate'));
+// ? Regular expression
+
+console.log(announcement.replaceAll(/door/g, 'gate')); // ?Boolean Methods 
+
+var plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boing'));
+console.log(plane.startsWith('AIR'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family');
+} // ? Practice exercise
+
+
+var checkBaggage = function checkBaggage(item) {
+  var baggage = item.toLowerCase();
+
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board❌');
+  } else {
+    console.log('Welcome aboard✔️');
+  }
 };
+
+checkBaggage('I have a laptop, some food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks anda gun for protection');
 /*
 // ! Working with string Part-1
 const airline = 'TAP Air Portugal';
