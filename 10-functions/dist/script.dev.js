@@ -19,35 +19,38 @@ const createBooking = function(flightNum,numPassengers = 1,price = 199 * numPass
 createBooking("LH123");
 createBooking("LH123",2,800);
 createBooking("LH123",undefined,800);
-*/
+
 // !How Passing Arguments Works Vs Reference
 
-var flight = 'LH234';
-var Gaurav = {
-  name: 'Gaurav Sharma',
-  passport: 63487263847623
-};
+const flight = 'LH234';
+const Gaurav = {
+    name:'Gaurav Sharma',
+    passport:63487263847623,
+}
 
-var checkIn = function checkIn(flightNum, passenger) {
-  flightNum = 'LH999';
-  passenger.name = "Mr. " + Gaurav.name;
+const checkIn = function(flightNum,passenger){
+    flightNum = 'LH999';
+    passenger.name = "Mr. "+Gaurav.name;
+    if(passenger.passport === 63487263847623){
+        alert('Checked in ✅');
+    } else {
+        alert('Wrong passport! ❌');
+    }
+}
 
-  if (passenger.passport === 63487263847623) {
-    alert('Checked in ✅');
-  } else {
-    alert('Wrong passport! ❌');
-  }
-}; // checkIn(flight,Gaurav);
+// checkIn(flight,Gaurav);
 // console.log(flight);
 // console.log(Gaurav);
+
 // Is the same as doing...
 // const fllightNum = flight;
 // const passenger = jonas;
 
-
-var newPassport = function newPassport(person) {
-  person.passport = Math.trunc(Maths.random() * 100000000);
+const newPassport = function(person){
+    person.passport = Math.trunc(Maths.random() * 100000000);
 };
 
 newPassport(Gaurav);
-checkIn(flight, Gaurav);
+checkIn(flight,Gaurav);
+*/
+// !First Class Functions
