@@ -52,7 +52,7 @@ const newPassport = function(person){
 
 newPassport(Gaurav);
 checkIn(flight,Gaurav);
-*/
+
 // !Functions accepting callback funvtion.
 const oneWord = function(str){
     return str.replace(/ /g,'').toLowerCase();
@@ -80,3 +80,27 @@ const high5 = function(){
 };
 
 document.body.addEventListener('click',high5);
+*/
+// !Function Returning function
+
+const greet = function(greeting){
+    return function(name){
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+
+greet('Hello')('Gaurav');
+
+// ? Using Arrow Function
+// const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+const greet2 = (greeting2)=>{
+    return (name2)=>{
+        console.log(`${greeting2} ${name2}`);
+    }
+}
+
+greet2('Whatsup')('Gaurav');
