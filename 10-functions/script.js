@@ -80,7 +80,7 @@ const high5 = function(){
 };
 
 document.body.addEventListener('click',high5);
-*/
+
 // !Function Returning function
 
 const greet = function(greeting){
@@ -104,3 +104,55 @@ const greet2 = (greeting2)=>{
 }
 
 greet2('Whatsup')('Gaurav');
+
+// !The Call and apply Methods
+
+const Vistara = {
+  airline: 'Vistara',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function(){ } ordway
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name });
+  },
+};
+
+Vistara.book(239, 'Gaurav Sharma');
+Vistara.book(239, 'Aryan Sharma');
+console.log(Vistara);
+// ? New airline of the same company
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = Vistara.book;
+// Don't work
+// book(23,'Saraha Williams');
+
+// ? Call Method
+book.call(eurowings, 23, 'Saraha Williams');
+console.log(eurowings);
+
+book.call(Vistara, 239, 'Mary Cooper');
+console.log(Vistara);
+
+// ? New airlines
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 242, 'Rahul Sharma');
+console.log(swiss);
+
+// Apply Method
+const flightData = [586,'George Cooper'];
+book.apply(swiss,flightData);
+*/
