@@ -104,7 +104,7 @@ const greet2 = (greeting2)=>{
 }
 
 greet2('Whatsup')('Gaurav');
-
+*/
 // !The Call and apply Methods
 
 const Vistara = {
@@ -153,6 +153,35 @@ book.call(swiss, 242, 'Rahul Sharma');
 console.log(swiss);
 
 // Apply Method
-const flightData = [586,'George Cooper'];
-book.apply(swiss,flightData);
-*/
+const flightData = [586, 'George Cooper'];
+book.apply(swiss, flightData);
+
+// ! The bind operator
+const bookEW = book.bind(eurowings);
+const bookVS = book.bind(Vistara);
+const bookLX = book.bind(swiss);
+bookEW(23, 'Steven Williams');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Gaurav Sharma');
+bookEW23('Tony Stark');
+
+//? With Event Listener
+Vistara.planes = 30;
+Vistara.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', Vistara.buyPlane.bind(Vistara));
+
+//? Partial Application
+
+const addTax = (rate,value) => value + value * rate;
+console.log(addTax(0.1,200));
+
+const addVAT = addTax.bind(null,0.23);
+// addVat = value => value + value * 0.23;
