@@ -185,3 +185,13 @@ console.log(addTax(0.1,200));
 
 const addVAT = addTax.bind(null,0.23);
 // addVat = value => value + value * 0.23;
+
+console.log(addVAT(100));
+console.log(addVAT(200));
+console.log(addVAT(400));
+//? Above program using function return function + 
+const addTax2 = rate2 => value2 => console.log(value2 + value2 * rate2);
+
+const addVAT2 = addTax2(0.23);
+addVAT2(233);
+addVAT2(453);
