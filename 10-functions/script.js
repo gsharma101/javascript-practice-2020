@@ -227,7 +227,7 @@ BONUS TEST DATA 1: [5, 2, 3]
 BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
 GOOD LUCK 😀
-*/
+
 
 const poll = {
   question: 'What is your favouririte programming language?',
@@ -268,3 +268,18 @@ document
 
   // [5,2,3]
   // [1,5,3,9,6,1]
+*/
+// ! Immediately Invoked function (IIFE)
+const runOnce = function(){
+  console.log(`This will never run again 1`);
+}
+runOnce();
+
+// ? This below is the expression of Immediatel Invoked function expression(IIFE)👇
+
+(function(){
+  console.log(`This will never run again 2`);
+})();
+
+// ? IIFE Using arrow function
+(() => console.log(`This will never run again 3`))();
