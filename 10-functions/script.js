@@ -283,7 +283,7 @@ runOnce();
 
 // ? IIFE Using arrow function
 (() => console.log(`This will never run again 3`))();
-*/
+
 // ! Closures
 const secureBooking = function(){
   let passengerCount = 0;
@@ -301,3 +301,26 @@ booker();
 booker();
 
 console.dir(booker);
+*/
+// ! More about clousers
+let f;
+
+const g = function(){
+  const a = 23;
+  f = function(){
+    console.log(a * 2);
+  }
+};
+
+const h = function(){
+  const b = 777;
+  f = function(){
+    console.log(b * 2);
+  }
+}
+g();
+f();
+// re-assigning f function
+h();
+f();
+
