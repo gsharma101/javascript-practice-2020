@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -104,7 +104,7 @@ console.log([...arr, ...arr2]);
 
 // JOIN
 console.log(letter.join(' - '));
-*/
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //! Using forof loop
 for(const moment of movements){
@@ -140,4 +140,23 @@ movements.forEach(function(mov,i,arr){
   } else {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
   }
+});
+*/
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+// forEach with a map
+currencies.forEach(function(value,key, map){
+  console.log(`${key} : ${value}`);
+});
+// forEach with a set
+// We can have duplicate parameters so instead of that we can use underscore. Which in JavaScript means  throwaway variable. That means a variable that is completely unncecessary
+const currenciesUnique = new Set(['USD','GBP','USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function(value,_,map){
+  console.log(`${key} : ${value}`);
 });
