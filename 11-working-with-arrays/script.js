@@ -77,6 +77,28 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+// Coding Challange 1
+const juliaData = [3,5,2,12,7];
+const KateData = [4,1,15,8,3];
+const juliaData2 = [9,16,6,8,3];
+const KateData2 = [10,5,6,1,4];
+const checkDogs = function(age1,age2){
+  const age1Correct = age1.slice();
+  age1Correct.splice(0,1);
+  age1Correct.splice(-2);
+  
+  const dogs = age1Correct.concat(age2);
+  dogs.forEach(function(dog,i){
+      if( dog >= 3){
+        console.log(`Dog number ${i+1} is an adult, and is ${dog} years old`);
+      } else {
+        console.log(`Dog number ${i+1} is still a puppy 🐶`);
+      }
+  });
+};
+
+checkDogs(juliaData,KateData);
+checkDogs(juliaData2,KateData2);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
