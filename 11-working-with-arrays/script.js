@@ -76,7 +76,26 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+// Map method
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
 
+const movementsUsd = movements.map(function(mov){
+  return mov * eurToUsd;
+});
+
+console.log(movements);
+console.log(movementsUsd);
+
+// Creating same thing using for off loop
+const movementsUsdfor = []; //empty array
+for(const move of movements) movementsUsdfor.push(move * eurToUsd);
+console.log(movementsUsdfor);
+
+// Using array function
+const movementsArrow = movements.map(mov => mov * eurToUsd);
+console.log(movementsArrow);
+/*
 // Coding Challange 1
 const juliaData = [3,5,2,12,7];
 const KateData = [4,1,15,8,3];
@@ -109,10 +128,10 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
+
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-/*
 let arr = ['a','b','c','d','e'];
 
 console.log(arr.slice(2));
