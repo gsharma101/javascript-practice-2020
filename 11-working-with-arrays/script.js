@@ -95,6 +95,18 @@ console.log(movementsUsdfor);
 // Using array function
 const movementsArrow = movements.map(mov => mov * eurToUsd);
 console.log(movementsArrow);
+
+const movementsDescriptions = movements.map((mov,i) => 
+  `Movement ${i + 1}: You ${mov > 0} ${Math.abs(mov)}`
+
+  // if( mov > 3){
+  //   return`Dog number ${i+1} is an adult, and is ${mov} years old`;
+  // } else {
+  //   return`Dog number ${i+1} is still a puppy 🐶`;
+  // }
+);
+
+console.log(movementsDescriptions);
 /*
 // Coding Challange 1
 const juliaData = [3,5,2,12,7];
@@ -129,7 +141,7 @@ const currencies = new Map([
 ]);
 
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 let arr = ['a','b','c','d','e'];
@@ -218,3 +230,4 @@ currenciesUnique.forEach(function(value,_,map){
   console.log(`${key} : ${value}`);
 });
 */
+ 
