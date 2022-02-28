@@ -46,6 +46,15 @@ console.log(jonas.species, matilda.species);
 console.log(jonas.hasOwnProperty('firstName'));
 console.log(jonas.hasOwnProperty('species'));
 
-// *Prototypal Inheritance on Built-In Objects file
+// *Prototypal Inheritance on Built-In Objects
 
+console.log(jonas.__proto__);
+// Object.prototype (top of the prototype chain)
+console.log(jonas.__proto__.__proto__);
+console.log(jack.__proto__.__proto__.__proto__);
 
+console.dir(Person.prototype.constructor); 
+
+const arr = [3,6,4,5,6,9,3]; // new Array === []
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
