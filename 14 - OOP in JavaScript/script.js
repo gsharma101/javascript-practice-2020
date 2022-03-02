@@ -71,4 +71,4 @@ const h1 = document.querySelector('h1');
 
 console.dir(x => x + 1);
 
-// * Coding Challenge 
+// * Coding Challenge #1
