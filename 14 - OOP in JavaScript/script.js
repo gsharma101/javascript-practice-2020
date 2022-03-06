@@ -73,4 +73,6 @@ console.dir(x => x + 1);
 
 // * Coding Challenge 1
 
-// * Coding CHallenge 2
+// * Coding Challenge 2
+
+// * Coding Challenge 3
